@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 18:54:11 by wchoi             #+#    #+#             */
-/*   Updated: 2020/07/07 13:55:08 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/07/07 16:25:48 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ char	*ft_strrchr(const char *s, int c)
 	char	*pos;
 
 	pos = NULL;
-	i = 0;
+	i = c - 1;
 	rt_s = (char *)s;
-	while (*(rt_s + i) != '\0')
+	while (i >= 0)
 	{
 		if (*(rt_s + i) == (char)c)
 		{
 			pos = rt_s + i;
 		}
-		i++;
+		i--;
 	}
-	if (*(rt_s + i) == '\0' && (*(rt_s + i) == (char)c))
-		return (pos);
-	return (NULL);
+	return (pos);
 }
