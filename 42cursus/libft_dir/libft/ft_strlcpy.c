@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 18:02:03 by wchoi             #+#    #+#             */
-/*   Updated: 2020/07/07 13:51:21 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/07/07 21:04:23 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,17 @@ size_t dstsize)
 {
 	size_t		i;
 
+	if (!dst || !src)
+		return (0);
 	i = 0;
-	while (i < dstsize - 1)
+	if (dstsize != 0)
 	{
-		*(dst + i) = *(src + i);
-		i++;
+		while (src[i] != '\0' && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	*(dst + i) = '\0';
-	return (dstsize - 1);
+	return (ft_strlen(src));
 }
