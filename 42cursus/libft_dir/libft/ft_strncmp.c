@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 17:36:25 by wchoi             #+#    #+#             */
-/*   Updated: 2020/07/02 17:59:36 by wchoi            ###   ########.fr       */
+/*   Created: 2020/07/06 13:58:00 by groom             #+#    #+#             */
+/*   Updated: 2020/07/06 14:21:05 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int     strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		i;
+	size_t		i;
 
 	i = 0;
-	while (i < n)
+	while (s1[i] != '\0' || s2[i] != '\0' || i < n)
 	{
-		if (*(unsigned char*)(s1 + i) == *(unsigned char*)(s2 + i))
+		if (s1[i] == s2[i])
 			i++;
 		else
-			return ((unsigned char*)(s1 + i) - (unsigned char*)(s2 + i));
-		i++;
+			break;
 	}
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

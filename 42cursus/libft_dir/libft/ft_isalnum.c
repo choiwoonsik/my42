@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 18:37:55 by wchoi             #+#    #+#             */
-/*   Updated: 2020/07/02 18:42:30 by wchoi            ###   ########.fr       */
+/*   Created: 2020/07/06 15:04:57 by groom             #+#    #+#             */
+/*   Updated: 2020/07/06 15:44:47 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int		ft_isalnum(int c)
 {
-	int		i;
-
-	i = 0;
-	while (*(s + i) != '\0')
-	{
-		if (*(s + i) == (char)c)
-		{
-			return (s + i);
-		}
-		i++;
-	}
-	if (*(s + i) == '\0' && (*(s + i) == (char)c))
-		return (s + i);
-	return (NULL);
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
 }
