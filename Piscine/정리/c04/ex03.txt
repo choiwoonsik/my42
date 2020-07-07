@@ -1,0 +1,10 @@
+ex03
+
+int	main(void)
+{
+	char	test[100] = "    	+-112582--   --++--+-2147483648abcd01212";
+	int		result;
+
+	result = ft_atoi(test);
+	printf("my>%d\n", result);
+}

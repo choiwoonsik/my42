@@ -1,0 +1,27 @@
+9번
+테스트 메인 함수
+
+int main(void)
+{
+    char    test[100] = "salut, comdDent tu vas ? 42mots quarante-deux; cinquante+et+un";
+    int     i;
+
+    i = 0;
+    ft_strcapitzalize(test);
+    while (i < 100)
+    {
+        printf("%c", test[i]);
+        i++;
+    }
+}	
+
+11번
+테스트 메인함수
+int	main(void)
+{
+	char	test[22] = "Coucou\ntu vas bien ?";
+	int		i;
+
+	i = 0;
+	ft_putstr_non_printable(test);
+}

@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+char	g_base[19] = "0123456789ABCDEF";
+
+int	main(void)
+{
+	char	test[100] = "   +++--++-+--A00B0Dggabcd01212";
+	int		result;
+
+	result = ft_atoi_base(test, g_base);
+	printf("%d\n", result);
+}

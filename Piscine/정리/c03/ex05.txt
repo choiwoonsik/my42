@@ -1,0 +1,26 @@
+예제 5
+
+
+
+int	main(void)
+{
+	char	str[50] = "i want to find this string";
+	char	to_find[50] = "9999";
+	char	str1[50] = "i want to find this string";
+	char	to_find1[50] = "9999";
+	char	*result;
+	int		rst;
+	int		test;
+
+	test = 0;
+	while (test < 50)
+	{
+	rst = ft_strlcat(str, to_find, test);
+	printf("m_y > %d\n%s\n%s", ft_strlcat(str, to_find, test), str, to_find);
+	printf("\n\n");
+	rst = strlcat(str1, to_find1, test);
+	printf("com > %lu\n%s\n%s", strlcat(str1, to_find1, test), str1, to_find1);
+	printf("\n\n=======================\n\n");
+	test++;
+	}
+}

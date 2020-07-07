@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
+{
+	int		tmp;
+
+	tmp = ft_strncmp("dnstlz", "dnstlr", 6);
+	printf("%d\n", tmp);
+	printf("%d", strncmp("dnstlz", "dnstlr", 6));
+}

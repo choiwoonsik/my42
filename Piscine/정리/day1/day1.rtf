@@ -1,0 +1,62 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset129 AppleSDGothicNeo-Regular;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww12340\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 1\'b9\'f8 print_groups\
+id -Gn $FT_USER | tr \'a1\'ae \'a1\'ae \'a1\'ae,\'a1\'af | tr -d \'a1\'ae\\n\'a1\'af\
+\'c1\'a2\'b1\'d9 \'c7\'e3\'b0\'a1\
+chmod +x ./\'c6\'c4\'c0\'cf\'b8\'ed\
+\
+-G : id\'c0\'c7 \'b9\'f8\'c8\'a3\'b8\'b8 \'c3\'e2\'b7\'c2\
+-Gn : id\'c0\'c7 \'c0\'cc\'b8\'a7\'c0\'cc \'c3\'e2\'b7\'c2\
+\
+2\'b9\'f8 - find_sh\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf2 \CocoaLigature0 find . -type f -name "*.sh" -exec basename -s ".sh" \{\} \\;\
+
+\f0 \cf0 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 exec basename \{\} \\;\
+\
+wc \'c4\'ab\'bf\'ee\'c6\'ae - l \'b6\'f3\'c0\'ce \'bf\'c9\'bc\'c7\
+\
+\
+\
+3\'b9\'f8\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf2 \CocoaLigature0 find . | wc -l | awk '\{ print $1 \}'
+\f0 \cf0 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+4\'b9\'f8\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf2 \CocoaLigature0 ifconfig -a | grep "ether " | awk '\{print $2\}'\
+\
+\
+5
+\f0 \'b9\'f8
+\f1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs38  tr -d '\\n' <test1>a
+\fs28 \
+\
+\
+7
+\f0 \'b9\'f8
+\f1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs40 \cf2 cat /etc/passwd | grep -v '^#' | awk 'NR%2==0' | cut -d":" -f1 | rev | sort -r | awk -v start=$FT_LINE1 -v end=$FT_LINE2 'NR>=start && NR<=end' | tr "\\n" "," | rev | sed 's/,/./' | rev | sed 's/,/, /g' | tr -d '\\n'\
+\
+8
+\f0 \'b9\'f8
+\f1 \
+echo $FT_NBR1 + $FT_NBR2 | sed "s/\\'/0/g" | tr '\\\\"?!' 1234 | tr 'mrdoc' 01234 | xargs echo 'obase=13; ibase=5;' | bc | tr 0123456789ABC 'gtaio luSnemf'}

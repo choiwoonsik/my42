@@ -1,0 +1,7 @@
+int	main(void)
+{
+	int		tmp;
+
+	tmp = ft_strcmp("", "");
+	printf("%d", tmp);
+}

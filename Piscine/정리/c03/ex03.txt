@@ -1,0 +1,14 @@
+ex02
+테스트용 예제
+
+int	main(void)
+{
+	char	dest[15] = "abcdefg";
+	char	src[5] = "kkkk";
+	char	*test;
+
+	test = ft_strcat(dest, src);
+	printf("%p\n", dest);
+	printf("%s\n", test);
+	printf("%p\n", test);
+}
