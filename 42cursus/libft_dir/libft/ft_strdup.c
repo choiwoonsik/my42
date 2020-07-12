@@ -6,13 +6,13 @@
 /*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 21:03:26 by groom             #+#    #+#             */
-/*   Updated: 2020/07/09 21:11:57 by groom            ###   ########.fr       */
+/*   Updated: 2020/07/12 16:22:58 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*buf;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 19:43:44 by groom             #+#    #+#             */
-/*   Updated: 2020/07/09 21:01:59 by groom            ###   ########.fr       */
+/*   Updated: 2020/07/12 16:20:25 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	i = 0;
 	buff = malloc(size * count);
-	if(!buff)
+	if (!buff)
 		return (buff);
 	while (i < count * size)
 	{

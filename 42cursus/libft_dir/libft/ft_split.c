@@ -6,7 +6,7 @@
 /*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 14:26:27 by groom             #+#    #+#             */
-/*   Updated: 2020/07/10 16:17:43 by groom            ###   ########.fr       */
+/*   Updated: 2020/07/12 16:06:44 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 char const	*g_str;
 char		g_sep;
-
-int		is_sep(char c)
-{
-	if (c == g_sep)
-		return (1);
-	return (0);
-}
 
 int		count_of_word(void)
 {
@@ -31,12 +24,25 @@ int		count_of_word(void)
 	word_count = 0;
 	while (g_str[str_pos] != '\0')
 	{
-		if ((!is_sep(g_str[str_pos]) && is_sep(g_str[str_pos - 1]))
-		|| (!is_sep(g_str[str_pos]) && str_pos == 0))
+		if ((!(g_sep == g_str[str_pos]) && (g_sep == g_str[str_pos - 1]))
+		|| (!(g_sep == g_str[str_pos]) && str_pos == 0))
 			word_count++;
 		str_pos++;
 	}
 	return (word_count);
+}
+
+int		*make_word_buf(int word_n)
+{
+	int		*word_len_arr;
+
+	word_len_arr = (int*)malloc(sizeof(int) * word_n);
+	if (!word_len_arr)
+	{
+		free(word_len_arr);
+		return (NULL);
+	}
+	return (word_len_arr);
 }
 
 int		*len_of_word(int word_n)
@@ -46,28 +52,24 @@ int		*len_of_word(int word_n)
 	int		len_count;
 	int		*word_len_arr;
 
-	word_len_arr = (int*)malloc(sizeof(int) * word_n);
+	word_len_arr = make_word_buf(word_n);
 	if (!word_len_arr)
-	{
-		free(word_len_arr);
-		return(word_len_arr);	
-	}
+		return (NULL);
 	len_count = 0;
 	word_pos = 0;
-	str_pos = 0;
-	while (g_str[str_pos] != '\0')
+	str_pos = -1;
+	while (g_str[++str_pos] != '\0')
 	{
-		if (!is_sep(g_str[str_pos]))
+		if (!(g_sep == g_str[str_pos]))
 		{
 			len_count++;
 			word_len_arr[word_pos] = len_count;
 		}
-		else if (str_pos > 0 && !is_sep(g_str[str_pos - 1]))
+		else if (str_pos > 0 && !(g_sep == g_str[str_pos - 1]))
 		{
 			word_pos++;
 			len_count = 0;
 		}
-		str_pos++;
 	}
 	return (word_len_arr);
 }
@@ -81,12 +83,8 @@ char	**mk_word(char **mk_strs, int *word_len_arr, int word_n)
 	n = -1;
 	while (++n < word_n)
 	{
-		mk_strs[n] = (char*)malloc(sizeof(char) * word_len_arr[n] + 1);
-		if (!mk_strs[n])
-		{
-			free(mk_strs[n]);
-			return (&mk_strs[n]);
-		}
+		if (!(mk_strs[n] = (char*)malloc(sizeof(char) * word_len_arr[n] + 1)))
+			return (NULL);
 		mk_strs[n][word_len_arr[n]] = '\0';
 	}
 	n = -1;
@@ -94,9 +92,9 @@ char	**mk_word(char **mk_strs, int *word_len_arr, int word_n)
 	word_pos = 0;
 	while (g_str[++n] != '\0')
 	{
-		if (!is_sep(g_str[n]))
+		if (!(g_sep == g_str[n]))
 			mk_strs[word_order][word_pos++] = g_str[n];
-		else if (!is_sep(g_str[n - 1]) && n > 0)
+		else if (!(g_sep == g_str[n - 1]) && n > 0)
 		{
 			word_pos = 0;
 			word_order++;

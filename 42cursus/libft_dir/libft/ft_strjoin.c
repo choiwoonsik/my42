@@ -6,7 +6,7 @@
 /*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 23:43:23 by groom             #+#    #+#             */
-/*   Updated: 2020/07/09 23:55:59 by groom            ###   ########.fr       */
+/*   Updated: 2020/07/12 15:25:35 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t		str_len;
 	size_t		pr_pos;
 	size_t		sf_pos;
-	char	*sum_str;
+	char		*sum_str;
 
 	if (!s1 || !s2)
 		return (NULL);

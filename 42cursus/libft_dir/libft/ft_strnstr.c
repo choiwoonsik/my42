@@ -6,13 +6,13 @@
 /*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 12:32:39 by groom             #+#    #+#             */
-/*   Updated: 2020/07/07 23:15:23 by groom            ###   ########.fr       */
+/*   Updated: 2020/07/12 15:19:09 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strnstr(const char* haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -35,6 +35,4 @@ char    *ft_strnstr(const char* haystack, const char *needle, size_t len)
 		i++;
 	}
 	return (0);
-
-	
 }
