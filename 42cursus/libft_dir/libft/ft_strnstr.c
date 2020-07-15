@@ -6,7 +6,7 @@
 /*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 12:32:39 by groom             #+#    #+#             */
-/*   Updated: 2020/07/12 15:19:09 by groom            ###   ########.fr       */
+/*   Updated: 2020/07/15 16:56:32 by groom            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	unsigned int	j;
 
 	i = 0;
-	j = 0;
 	if (needle[0] == '\0')
 		return ((char *)haystack);
 	while (haystack[i] != '\0' && i < len)
 	{
+		j = 0;
 		if (haystack[i] == needle[j])
 		{
 			while (needle[j] == haystack[i + j] && i + j < len)
