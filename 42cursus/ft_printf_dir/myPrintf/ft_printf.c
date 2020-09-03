@@ -6,7 +6,7 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 18:02:41 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/02 21:35:57 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/03 22:00:45 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ int		case_divide(char type, va_list ap, flag flag_info)
 
 	//va_arg함수 - va_start 함수에 의해 설정된 string값에 자료형의 크기를 더한다
 	if (type == 's')
-		len_count = case_str_print(va_arg(ap, char*), ap, flag_info);
+		len_count = case_str_print(va_arg(ap, char*), flag_info);
 	if (type == 'd' || type == 'i')
-		len_count = case_int_print(va_arg(ap, int), ap, flag_info);
+		len_count = case_int_print(va_arg(ap, int),flag_info);
 	if (type == 'c')
-		len_count = case_char_print(va_arg(ap, int), ap, flag_info);
+		len_count = case_char_print(va_arg(ap, int));
 	if (type == 'u')
-		len_count = case_uint_print((unsigned int)va_arg(ap, unsigned int), ap, flag_info);
+		len_count = case_uint_print((unsigned int)va_arg(ap, unsigned int), flag_info);
 	if (type == 'x')
-		len_count = case_hexa_print(va_arg(ap, unsigned int), FALSE, ap, flag_info);
+		len_count = case_hexa_print(va_arg(ap, unsigned int), FALSE, flag_info);
 	if (type == 'X')
-		len_count = case_hexa_print(va_arg(ap, unsigned int), TRUE, ap, flag_info);
+		len_count = case_hexa_print(va_arg(ap, unsigned int), TRUE, flag_info);
 	if (type == 'p')
-		len_count = case_pointer_print(va_arg(ap, unsigned long long), ap, flag_info);
+		len_count = case_pointer_print(va_arg(ap, unsigned long long), flag_info);
 	if (type == '%')
 		len_count = case_percent_print();
 	return (len_count);
@@ -58,7 +58,6 @@ int		ft_printf(const char *format, ...)
 	va_list ap;
 	flag	flag_info;
 	int		i;
-	char 	*str;
 	int		len_count;
 
 	i = 0;

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/15 18:23:24 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/02 21:35:23 by choeunsig        ###   ########.fr       */
+/*   Created: 2020/09/03 21:05:19 by choeunsig         #+#    #+#             */
+/*   Updated: 2020/09/03 21:53:21 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ flag	flag_start(void);
 int		get_flag_info(char* buffer, int i, flag *flag_info, va_list ap);
 int		ft_printf(const char *format, ...);
 int		case_divide(char type, va_list ap, flag flag_info);
-int		case_str_print(char *str, va_list ap, flag flag_info);
-int		case_int_print(int integer, va_list ap, flag flag_info);
-int		case_char_print(char character, va_list ap, flag flag_info);
-int		case_uint_print(unsigned int u_integer, va_list ap, flag flag_info);
-int		case_hexa_print(unsigned int hexa, int isBig, va_list ap, flag flag_info);
-int		case_pointer_print(unsigned long long pointer, va_list ap, flag flag_info);
+int		case_str_print(char *str, flag flag_info);
+int		case_int_print(int integer, flag flag_info);
+int		case_char_print(char character);
+int		case_uint_print(unsigned int u_integer, flag flag_info);
+int		case_hexa_print(unsigned int hexa, int isBig, flag flag_info);
+int		case_pointer_print(unsigned long long pointer, flag flag_info);
 int		case_percent_print(void);
 int		ft_wirte_all(char *out, int precision);
 int		isValid_type(char type);

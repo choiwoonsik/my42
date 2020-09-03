@@ -6,7 +6,7 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 18:13:36 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/02 11:04:04 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/03 21:50:49 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ flag	treat_str_flag(char *str, flag flag_info)
 	if (flag_info.flag_width_isTrue == TRUE && flag_info.flag_dot == FALSE)
 	{
 		//폭이 문자열보다 작으면 의미 없음
-		if (flag_info.flag_width <= ft_strlen(str)){
-			flag_info.flag_dot_precision = ft_strlen(str);
+		if (flag_info.flag_width <= (int)ft_strlen(str)){
+			flag_info.flag_dot_precision = (int)ft_strlen(str);
 			flag_info.flag_width = FALSE;
 		}
 		else
 			flag_info.flag_dot_precision = flag_info.flag_width;
 	}
 	else if (flag_info.flag_width_isTrue == FALSE && flag_info.flag_dot == FALSE)
-		flag_info.flag_dot_precision = ft_strlen(str);
+		flag_info.flag_dot_precision = (int)ft_strlen(str);
 	//정밀도가 있고, 폭도 있는 경우 / 폭이 정밀도 미만라면 폭은 역활이 없다
 	//폭이 정밀도 보다 작다면 폭은 의미 없음
 	if (flag_info.flag_width < flag_info.flag_dot_precision && flag_info.flag_width_isTrue == TRUE)
 		flag_info.flag_width_isTrue = FALSE;
 	//정밀도가 문자열보다 크다면 정밀도는 역활이 없다
-	if (flag_info.flag_dot_precision > ft_strlen(str)) {
-		flag_info.flag_dot_precision = ft_strlen(str);
+	if (flag_info.flag_dot_precision > (int)ft_strlen(str)) {
+		flag_info.flag_dot_precision = (int)ft_strlen(str);
 		flag_info.flag_dot = FALSE;
 	}
 	return (flag_info);
@@ -64,7 +64,7 @@ void	case_str_left_right(char* str, flag flag_info)
 	}
 }
 
-int		case_str_print(char* str, va_list ap, flag flag_info)
+int		case_str_print(char* str, flag flag_info)
 {
 	int len_count;
 
@@ -82,14 +82,14 @@ int		case_str_print(char* str, va_list ap, flag flag_info)
 	// 폭은 true 정밀도는 false -> 폭이 문자열보다 긴 경우 폭을 보장하며 작은경우는 그냥 출력 ( ' ' 빈칸으로 보장한다 )
 	else if (flag_info.flag_width_isTrue == TRUE && flag_info.flag_dot == FALSE)
 	{
-		if (flag_info.flag_width > ft_strlen(str))
+		if (flag_info.flag_width > (int)ft_strlen(str))
 		{
 			len_count = flag_info.flag_width;
 			case_str_left_right(str, flag_info);
 		}
 		else 
 		{
-			flag_info.flag_dot_precision = ft_strlen(str);
+			flag_info.flag_dot_precision = (int)ft_strlen(str);
 			len_count = ft_wirte_all(str, flag_info.flag_dot_precision);
 		}
 	}
