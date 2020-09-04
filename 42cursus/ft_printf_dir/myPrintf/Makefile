@@ -22,7 +22,6 @@ SURPL_O = ft_printf.o \
 		case_pointer.o \
 		case_str.o \
 		case_uint.o \
-		case_flag.o \
 		write_all.o \
 		control_flag.o \
 		case_char.o \

@@ -6,7 +6,7 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 18:02:41 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/03 22:00:45 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/04 17:01:08 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		case_divide(char type, va_list ap, flag flag_info)
 	if (type == 'd' || type == 'i')
 		len_count = case_int_print(va_arg(ap, int),flag_info);
 	if (type == 'c')
-		len_count = case_char_print(va_arg(ap, int));
+		len_count = case_char_print(va_arg(ap, int), flag_info);
 	if (type == 'u')
 		len_count = case_uint_print((unsigned int)va_arg(ap, unsigned int), flag_info);
 	if (type == 'x')
@@ -47,7 +47,7 @@ int		case_divide(char type, va_list ap, flag flag_info)
 	if (type == 'p')
 		len_count = case_pointer_print(va_arg(ap, unsigned long long), flag_info);
 	if (type == '%')
-		len_count = case_percent_print();
+		len_count = case_percent_print(flag_info);
 	return (len_count);
 }
 
@@ -73,15 +73,6 @@ int		ft_printf(const char *format, ...)
 		else if (buffer[i] == '%' && buffer[i] != '\0')
 		{
 			i = get_flag_info(buffer, ++i, &flag_info, ap);
-			// printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n",  
-			// flag_info.flag_dot,
-			// flag_info.flag_dot_precision,
-			// flag_info.flag_minus,
-			// flag_info.flag_zero,
-			// flag_info.flag_star,
-			// flag_info.flag_width,
-			// flag_info.flag_width_isTrue,
-			// flag_info.flag_type);
 			if (isValid_type(buffer[i]))
 			{
 				len_count += case_divide(buffer[i], ap, flag_info);

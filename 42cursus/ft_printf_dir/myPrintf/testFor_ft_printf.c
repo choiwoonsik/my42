@@ -6,7 +6,7 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 17:56:02 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/03 20:59:55 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/03 23:06:48 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ int main(void)
 	int	len = 0;
 	char *tmp = "this is original function";
 
-
-}
-
-
-
-// ft_print_str("$$test is<<%s>>test this$$\n", tmp);
+	// ft_print_str("$$test is<<%s>>test this$$\n", tmp);
 	// ft_print_str("$$test is<<%d>>test this$$\n", 100000000);
 	// ft_print_str("$$test is<<%d>>test this$$\n", -100000000);
 	// ft_print_str("$$test is<<%d>>test this$$\n", -2147483648);
@@ -37,11 +32,20 @@ int main(void)
 	// ft_print_str("$$test is<<%x>>test this$$\n", 32577);
 	// ft_print_str("$$test is<<%X>>test this$$\n", 32577);
 	// ft_print_str("$$test is<<%p>>test this$$\n", k);
-	// ft_print_str("%%%%");
-
-	// printf("\n$$$$$$$$$$$$ VS $$$$$$$$$$$\n\n");
-	// printf("\n$$$$$$$$$$$$ VS $$$$$$$$$$$\n\n");
 	
+	ft_printf("%5%\n");
+	ft_printf("%-5%\n");
+	ft_printf("%05%\n");
+	ft_printf("%-05%\n");
+
+	printf("\n$$$$$$$$$$$$ VS $$$$$$$$$$$\n\n");
+	printf("\n$$$$$$$$$$$$ VS $$$$$$$$$$$\n\n");
+	
+	printf("%5%\n");
+	printf("%-5%\n");
+	printf("%05%\n");
+	printf("%-05%\n");
+
 	// len = printf("$$test is<<%s>>test this$$\n", tmp);
 	// printf(" len : %d\n", len);
 	// len = printf("$$test is<<%d>>test this$$\n", 100000000);
@@ -65,3 +69,4 @@ int main(void)
 	// len = printf("$$test is<<%p>>test this$$\n", k);
 	// printf(" len : %d\n", len);
 	// printf("%%%%");
+}
