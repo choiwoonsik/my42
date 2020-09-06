@@ -15,8 +15,7 @@ SRCS =  ft_printf.c \
 		all/write_all.c \
 		all/control_flag.c \
 		
-SURPL_O = ft_printf.o \
-		case_hexa_big_small.o \
+SURPL_O = case_hexa_big_small.o \
 		case_int.o \
 		case_percent.o \
 		case_pointer.o \
