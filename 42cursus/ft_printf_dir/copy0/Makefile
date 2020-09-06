@@ -29,14 +29,16 @@ CC = gcc
 
 FLAGS = -c -Wall -Wextra -Werror
 
-INCLUDES = -I./includes
+INC = includes
 
 OBJS = $(SRCS:.c=.o)
 
+%.o : %.c
+	$(CC) $(CFLAGS) -I$(INC) -o $@ -c $<
+
 $(NAME): $(OBJS)
 	$(MAKE) bonus -C ./libft
-	cp libft/libft.a $(NAME)
-	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
+	cp libft/libft.a ./$(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
 all : $(NAME)

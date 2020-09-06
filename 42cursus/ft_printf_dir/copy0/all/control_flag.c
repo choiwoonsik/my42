@@ -6,7 +6,7 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 18:08:00 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/06 12:28:54 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/06 19:19:12 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ flag	flag_start(void)
 	flag_info.flag_minus = FALSE;
 	flag_info.flag_zero = FALSE;
 	flag_info.flag_star = FALSE;
-	flag_info.flag_width = -1;
+	flag_info.flag_width = 0;
 	flag_info.flag_width_isTrue = FALSE;
 	flag_info.flag_type = FALSE;
 	flag_info.flag_isMinus = FALSE;
@@ -39,7 +39,7 @@ int		get_flag_info(char* buffer, int i, flag *flag_info, va_list ap)
 		if ((!isValid_flag(buffer[i]) && !ft_isdigit(buffer[i])) && !isValid_type(buffer[i]))
 			break;
 		// 0 플래그 단, 정밀도가 정수에 대해 지정되거나 - 플래그가 지정되면 무시된다
-		if (buffer[i] == '0' && flag_info->flag_minus == FALSE && flag_info->flag_dot == FALSE) 
+		if (buffer[i] == '0' && flag_info->flag_minus == FALSE && flag_info->flag_width == 0) 
 		{
 			flag_info->flag_zero = TRUE;
 		}	
@@ -84,7 +84,7 @@ int		get_flag_info(char* buffer, int i, flag *flag_info, va_list ap)
 				flag_info->flag_zero = FALSE;
 			}
 		}
-		if (ft_isdigit(buffer[i]) && !flag_info->flag_width_isTrue && !flag_info->flag_dot) 
+		if (ft_isdigit(buffer[i]) && !flag_info->flag_width_isTrue && !flag_info->flag_dot && buffer[i] != '0') 
 		{
 			flag_info->flag_width_isTrue = TRUE;
 			flag_info->flag_width = ft_atoi(buffer + i);

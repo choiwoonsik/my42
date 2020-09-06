@@ -6,7 +6,7 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 18:20:12 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/04 23:02:22 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/06 13:08:41 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ int		case_percent_print(flag flag_info)
 	return (len_count);
 }
 
-// 문자열, 문자, %, 			완료
-// 숫자 i d , x , X, p 		해야댐
+// 문자열, 문자, %, p			완료
+// 숫자 i d , x , X 		해야댐
