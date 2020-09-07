@@ -6,13 +6,11 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 18:02:41 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/06 23:17:10 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/07 15:23:38 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-//				타입 및 케이스 체크 부분			//
 
 int		isValid_flag(char flag)
 {
@@ -25,13 +23,10 @@ int		isValid_type(char type)
 	|| (type == 'x') || (type == 'X') || (type == 'p') || (type == '%'));
 }
 
-//				케이스 분류 부분			//
-
 int		case_divide(char type, va_list ap, flag flag_info)
 {
 	int		len_count;
 
-	//va_arg함수 - va_start 함수에 의해 설정된 string값에 자료형의 크기를 더한다
 	if (type == 's')
 		len_count = case_str_print(va_arg(ap, char*), flag_info);
 	if (type == 'd' || type == 'i')
@@ -51,32 +46,27 @@ int		case_divide(char type, va_list ap, flag flag_info)
 	return (len_count);
 }
 
-//				문자열 출력 메인 부분			//
-
 int		ft_printf(const char *format, ...)
 {
-	va_list ap;
+	va_list	ap;
 	flag	flag_info;
 	int		i;
 	int		len_count;
 
 	i = 0;
 	len_count = 0;
-	//fomat 주소값을 ap에 넣어준다
 	va_start(ap, format);
 	char *buffer = ft_strdup(format);
-	while (1)
+	while (TRUE)
 	{
 		flag_info = flag_start();
 		if (buffer[i] == '\0')
-			break;
+			break ;
 		else if (buffer[i] == '%' && buffer[i] != '\0')
 		{
 			i = get_flag_info(buffer, ++i, &flag_info, ap);
 			if (isValid_type(buffer[i]))
-			{
 				len_count += case_divide(buffer[i], ap, flag_info);
-			}
 			else if (buffer[i])
 				len_count += ft_putchar(buffer[i]);
 		}

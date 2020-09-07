@@ -6,7 +6,7 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 18:08:00 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/06 19:19:12 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/06 23:17:45 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		get_flag_info(char* buffer, int i, flag *flag_info, va_list ap)
 			flag_info->flag_width = va_arg(ap, int);
 			if (flag_info->flag_width < 0)
 			{
-				flag_info->flag_width_isTrue = FALSE;
+				flag_info->flag_width *= -1;
 				flag_info->flag_minus = TRUE;
 				flag_info->flag_zero = FALSE;
 			}

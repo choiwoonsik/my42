@@ -6,7 +6,7 @@
 /*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/04 20:16:16 by choeunsig         #+#    #+#             */
-/*   Updated: 2020/09/06 19:16:42 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/09/07 12:59:46 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,130 @@
 
 int main(void)
 {
-    int n = 0;
-   
-    n = ft_printf("%05i", 43);
-    printf("len>   %d\n\n", n);
+	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		h = 4200;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	char	*n = "abcdefghijklmnop";
+	char	*o = "-a";
+	char	*p = "-12";
+	char	*q = "0";
+	char	*r = "%%";
+	char	*s = "-2147483648";
+	char	*t = "0x12345678";
+	char	*u = "-0";
+	int		len = 0;
 
-    printf("======\n");
+	a = 8;
+	// len = ft_printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
 
-    n = printf("%05i", 43);
-    printf("len>   %d\n\n", n);
+	len = ft_printf("%*p", a, (void *)209590960);
+	printf("<\n");
+	printf("len> %d\n", len);
+
+	// len = ft_printf("%*x", a, 209590960);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	len = ft_printf("%*p", a, (void *)207038912);
+	printf("<\n");
+	printf("len> %d\n", len);
+
+	// len = ft_printf("%*x", a, 207038912);
+	// printf("<\n");
+	// len = printf("len> %d\n", len);
+
+	// len = ft_printf("%*p", a, (void *)1);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	// len = ft_printf("%*x", a, 1);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	// len = ft_printf("%*p", a, NULL);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+	
+	// len = ft_printf("%*x", a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+	
+	// len = ft_printf("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	// a = 9;
+	// len = ft_printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+	// len = ft_printf("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	
+	printf("======\n");
+	
+	// a = 8;
+	// len = printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	len = printf("%*p", a, (void *)209590960);
+	printf("<\n");
+	printf("len> %d\n", len);
+
+	// len = printf("%*x", a, 209590960);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	len = printf("%*p", a, (void *)207038912);
+	printf("<\n");
+	printf("len> %d\n", len);
+
+	// len = printf("%*x", a, 207038912);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	// len = printf("%*p", a, (void *)1);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	// len = printf("%*x", a, 1);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	// len = printf("%*p", a, NULL);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+	
+	// len = printf("%*x", a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+
+
+
+	// len = printf("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+
+	// a = 9;
+	// len = printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
+	// len = printf("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	// printf("<\n");
+	// printf("len> %d\n", len);
 }
-
-// First line of code: {return test("%7d", -14);}
-//    3       expected output : "    -14"
-//    4       your output     : "     -14"
-//    5       expected (nonprintable as hex) : "    -14"
-//    6       actual   (nonprintable as hex) : "     -14"
-//    7
-//    8 Test 202 (d_width_neg_exactfit) : FAILED.
-//    9     First line of code: {return test("%5d", -2562);}
-//   10       expected output : "-2562"
-//   11       your output     : " -2562"
-//   12       expected (nonprintable as hex) : "-2562"
-//   13       actual   (nonprintable as hex) : " -2562"
-//   14
-//   15 Test 206 (d_width_neg_fits_lj) : FAILED.
-//   16     First line of code: {return test("%-7d", -14);}
-//   17       expected output : "-14    "
-//   18       your output     : "-14     "
-//   19       expected (nonprintable as hex) : "-14    "
-//   20       actual   (nonprintable as hex) : "-14     "
-//   21
-//   22 Test 209 (d_width_neg_exactfit_lj) : FAILED.
-//   23     First line of code: {return test("%-5d", -2562);}
-//   24       expected output : "-2562"
-//   25       your output     : "-2562 "
-//   26       expected (nonprintable as hex) : "-2562"
-//   27       actual   (nonprintable as hex) : "-2562 "
