@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 13:47:12 by wchoi             #+#    #+#             */
-/*   Updated: 2020/10/07 15:33:47 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/08/02 16:24:07 by choeunsig        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,39 +81,4 @@ int		get_next_line(int fd, char **line)
 			return (make_new_line(line, page, fd, pos));
 	}
 	return (ret_func(fd, page, line, check_last));
-}
-
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-int main()
-{
-	int             fd;
-	int             i;
-	int             j;
-	char    		*line = 0;
-	char			*lineadress[66];
-
-	j = 1;
-	printf("\n==========================================\n");
-	printf("========== TEST 1 : The Alphabet =========\n");
-	printf("==========================================\n\n");
-
-	if (!(fd = open("text", O_RDONLY)))
-	{
-		printf("\nError in open\n");
-		return (0);
-	}
-	while ((i = get_next_line(fd, &line)) > 0)
-	{
-		printf("|%s\n", line);
-		lineadress[j - 1] = line;
-		j++;
-	}
-	printf("|%s\n", line);
-	free(line);
-	close(fd);
 }
