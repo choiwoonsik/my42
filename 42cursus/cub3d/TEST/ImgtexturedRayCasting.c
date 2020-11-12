@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:43:05 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/03 22:18:24 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/12 16:30:40 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 #define mapWidth 		24
 #define mapHeight 		24
-#define screenWidth 	1280
-#define screenHeight	960
+#define screenWidth 	640
+#define screenHeight	480
 #define texWidth		64
 #define texHeight		64
 
@@ -363,6 +363,12 @@ int		f_init(t_info *info)
 	{
 		if(!(info->texture[i] = (int *)malloc(sizeof(int) * (texHeight * texWidth))))
 			return (-1);
+		j = 0;
+		while (j < texHeight * texWidth)
+		{
+			info->texture[i][j] = 0;
+			j++;
+		}
 		i++;
 	}
 
@@ -373,18 +379,6 @@ int		f_init(t_info *info)
 		while (j < screenWidth)
 		{
 			info->buf[i][j] = 0;
-			j++;
-		}
-		i++;
-	}
-
-	i = 0;
-	while (i < 8)
-	{
-		j = 0;
-		while (j < texHeight * texWidth)
-		{
-			info->texture[i][j] = 0;
 			j++;
 		}
 		i++;
@@ -418,14 +412,14 @@ void	load_texture(t_info *info)
 {
 	t_img	img;
 
-	load_image(info, info->texture[0], "./pics/barrel.xpm", &img);
-	load_image(info, info->texture[1], "./pics/bluestone.xpm", &img);
-	load_image(info, info->texture[2], "./pics/colorstone.xpm", &img);
-	load_image(info, info->texture[3], "./pics/eagle.xpm", &img);
-	load_image(info, info->texture[4], "./pics/greenlight.xpm", &img);
-	load_image(info, info->texture[5], "./pics/greystone.xpm", &img);
-	load_image(info, info->texture[6], "./pics/mossy.xpm", &img);
-	load_image(info, info->texture[7], "./pics/pillar.xpm", &img);
+	load_image(info, info->texture[0], "./pics/bluestone.xpm", &img);
+	load_image(info, info->texture[1], "./pics/colorstone.xpm", &img);
+	load_image(info, info->texture[2], "./pics/eagle.xpm", &img);
+	load_image(info, info->texture[3], "./pics/greenlight.xpm", &img);
+	load_image(info, info->texture[4], "./pics/greystone.xpm", &img);
+	load_image(info, info->texture[5], "./pics/mossy.xpm", &img);
+	load_image(info, info->texture[6], "./pics/pillar.xpm", &img);
+	load_image(info, info->texture[7], "./pics/purplestone.xpm", &img);
 }
 
 int main()
