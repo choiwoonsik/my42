@@ -6,7 +6,7 @@
 #    By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 20:08:11 by wchoi             #+#    #+#              #
-#    Updated: 2020/11/12 18:00:51 by wchoi            ###   ########.fr        #
+#    Updated: 2020/11/17 16:20:49 by wchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,11 @@ SRCS_NAME = main.c \
 			cub3d.c\
 			keyControl.c\
 			keyControl2.c\
-			map.c\
 			textures.c\
+			gnl.c\
+			parsing_info.c\
+			parsing_info2.c\
+			utils.c\
 
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
@@ -37,7 +40,7 @@ SCREENSHOT = screenshot.bmp
 
 HEADER	= -I./header
 
-CFLAG	= -Wall -Wextra -Werror 
+CFLAG	= -Wall -Wextra -Werror
 
 LIBFT	= libft.a
 

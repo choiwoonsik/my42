@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:39:45 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/12 17:37:41 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/17 21:51:07 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void		draw(t_info *info)
 	int		x;
 
 	y = 0;
-	while (y < screenHeight)
+	while (y < info->config.screenHeight)
 	{
 		x = 0;
-		while (x < screenWidth)
+		while (x < info->config.screenWidth)
 		{
-			info->img.data[y * screenWidth + x] = info->config.screenBuffer[y][x];
+			info->img.data[y * info->config.screenWidth + x] =
+			info->config.screenBuffer[y][x];
 			x++;
 		}
 		y++;
@@ -34,7 +35,7 @@ void		draw(t_info *info)
 void		calc(t_info *info)
 {
 	casting_floor(info);
-	casting_wall(info);
+	casting_wall(info, &info->config);
 }
 
 int			main_loop(t_info *info)

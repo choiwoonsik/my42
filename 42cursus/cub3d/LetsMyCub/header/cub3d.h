@@ -6,14 +6,17 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:29:20 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/12 18:53:07 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/18 23:38:35 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+#include <stdio.h>
+
 # include <stdlib.h>
+# include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
 # include "key_macro.h"
@@ -21,13 +24,20 @@
 # include "mlx.h"
 
 //map정보 파싱받아서 넣기
-#define mapWidth 		24
-#define mapHeight 		24
-#define screenWidth 	640
-#define screenHeight	480
-#define texWidth		64
-#define texHeight		64
+#define BUFFER_SIZE		16
+
+#define cub_R			7
+#define cub_NO			0
+#define cub_SO			1
+#define cub_WE			2
+#define cub_EA			3
+#define cub_S			4
+#define cub_FL			5
+#define cub_CL			6
+#define cub_MAP			10
 //
+
+void		printf_map(char **map);
 
 typedef struct s_floor
 {
@@ -113,17 +123,30 @@ typedef struct	s_img
 	int			img_height;
 }				t_img;
 
+typedef	struct s_texture
+{
+	char		*texPath;
+	int			*texture;
+	int			texWidth;
+	int			texHeight;
+}				t_tex;
+
 typedef struct s_config
 {
 	// moveSpeed & rotateSpeed
 	double		moveSpeed;
 	double		rotSpeed;
 
-	int			worldMap[24][24];
+	char		**worldMap;
+	int			mapHeight;
+	int			mapWidth;
 	
-	int			screenBuffer[screenHeight][screenWidth];
-	int			**texture;
-	char		*texPath;
+	int			**screenBuffer;
+	int			screenHeight;
+	int			screenWidth;
+	t_tex		*tex;
+	int			fl_color;
+	int			cl_color;
 }				t_config;
 
 typedef struct s_player
@@ -154,15 +177,28 @@ typedef struct	s_info
 
 // 함수 선언
 
+// main.c
+int				ERROR_MESSAGE(t_info *info, int exit_code, char *error_message);
+
 //cub3d.c
 int				main_loop(t_info *info);
 
 // init.c
-int				mini_init(t_info *info);
+void			mini_value_init(t_info *info);
+int				mini_screen_init(t_info *info);
+int				mini_init(t_info *info, t_config *conf);
+int				mini_config_init(t_info *info);
 void			f_free(t_info *info);
+
+// gnl.c
+int				get_next_line(int fd, char **line);
 
 // parsing_info.c
 int				parse_info(t_info *info, char *path);
+
+// parsing_info2.c
+int				parse_by_type(t_info *info, char *line, int ret, int type);
+
 
 // keyControl.c
 int				key_control();
@@ -170,24 +206,24 @@ int				key_control();
 // keyControl2.c
 int				exit_game(void *param);
 
-// map.c
-void			map_init(t_info *info);
-
 // textures.c
-void			load_texture(t_info *info);
+int				load_texture(t_info *info);
 
 // casting_init.c
-void			cast_wall_init(t_info *info, int x);
+void			cast_wall_init(t_info *info, t_config *conf, int x);
 void			dda_init(t_dda *dda, t_cast *cast, t_config *conf, t_player *p);
 
 // casting_wall.c
-void			casting_wall(t_info *info);
-
-// casting_wall2.c
-// void			calc_wall_pos(t_cast *cast, t_dda *dda, t_wall *wall);
-// void			build_wall(int y, int x, t_info *info, t_wall *wall);
+void			casting_wall(t_info *info, t_config *conf);
 
 // casting_floor.c
 void			casting_floor(t_info *info);
+
+// utils.c
+int				free_line(char *line, int ret);
+int				is_upper(char c);
+int				is_space(int c);
+int				is_digit(char c);
+char			*update_map(char *buffer, char *line);
 
 #endif

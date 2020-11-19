@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: groom <groom@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 21:13:16 by groom             #+#    #+#             */
-/*   Updated: 2020/07/09 23:42:42 by groom            ###   ########.fr       */
+/*   Updated: 2020/11/17 16:14:50 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,20 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t		pos;
-	size_t		word_len;
 	char		*word;
 
 	pos = 0;
 	if (!s)
 		return (NULL);
-	if (ft_strlen(s) < start)
-		return (ft_strdup(""));
-	word_len = (ft_strlen(s) - start < len) ? ft_strlen(s) - start : len;
-	if (start + word_len > ft_strlen(s) || word_len > ft_strlen(s))
+	if (!(word = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	word = (char*)malloc(word_len + 1);
-	if (!word)
-		return (word);
-	while (pos < word_len && s[start + pos])
+	if (start < ft_strlen(s))
 	{
-		word[pos] = s[start + pos];
-		pos++;
+		while (s[start + pos] && pos < len)
+		{
+			word[pos] = s[start + pos];
+			pos++;
+		}
 	}
 	word[pos] = '\0';
 	return (word);
