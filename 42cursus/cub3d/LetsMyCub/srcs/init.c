@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 21:19:23 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/19 11:59:58 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 12:24:58 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void			mini_value_init(t_info *info)
 {
-	info->player.posX = 6.0;
-	info->player.posY = 2.0;
+	info->player.posX = 3.0;
+	info->player.posY = 3.0;
 	info->player.dirX = -1.0;
 	info->player.dirY = 0.0;
 	info->player.camX = 0.0;
 	info->player.camY = 0.66;
-	info->config.moveSpeed = 0.2;
-	info->config.rotSpeed = 0.2;
+	info->config.moveSpeed = M_PI_4 / 3;
+	info->config.rotSpeed = M_PI_4 / 3;
 }
 
 int				mini_config_init(t_info *info)

@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 13:09:38 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/19 11:59:31 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 11:45:37 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,12 @@ void		calc_sideDist(t_info *info)
 		info->cast.sideDistY
 		= (info->cast.mapY + 1.0 - info->player.posY) * info->cast.deltaDistY;
 	}
-	// printf("ray X : %f\n", info->cast.rayDirX);
 }
 
 void		calc_dda(t_cast *cast, t_info *info)
 {
-	int i = 0;
 	while (cast->hit == 0)
 	{
-		i++;
-		// printf("sideD X : %f, sideD Y : %f, del X : %f, del Y : %f, Hit : %d\n", 
-		// 	cast->sideDistX, cast->sideDistY, cast->deltaDistX, cast->deltaDistY, cast->hit);
-		printf("i : %d >>> map X : %d, step X : %d ", i, cast->mapX, cast->stepX);
-		printf("side X : %f, side Y : %f\n", cast->sideDistX, cast->sideDistY);
 		if (cast->sideDistX < cast->sideDistY)
 		{
 			cast->sideDistX += cast->deltaDistX;
@@ -66,8 +59,6 @@ void		calc_dda(t_cast *cast, t_info *info)
 		if (info->config.worldMap[cast->mapX][cast->mapY] - '0' > 0)
 			cast->hit = 1;
 	}
-	// printf("mapX : %d, mapY : %d, stepX : %d, stepY : %d, rayX : %f, rayY : %f, player X : %f, player Y : %f\n", 
-	// 		cast->mapX, cast->mapY, cast->stepX, cast->stepY, cast->rayDirX, cast->rayDirY, info->player.posX, info->player.posY);
 	if (cast->side == 0)
 		cast->perpwallDist = (cast->mapX - info->player.posX + (1 - cast->stepX) / 2) / cast->rayDirX;
 	else
@@ -81,19 +72,22 @@ void		calc_wall_height(t_cast *cast, t_dda *dda, t_config *conf, int x)
 	int		color;
 	int		texHeight;
 
-	texHeight = conf->tex[1].texHeight;
+	if (dda->texN == 2)
+		dda->texN = 4;
+	texHeight = conf->tex[dda->texN].texHeight;
 	dda->step = 1.0 * texHeight / dda->lineHeight;
 	dda->texPos = (dda->drawSt - conf->screenHeight / 2 + dda->lineHeight / 2) * dda->step;
 	d_y = dda->drawSt;
-	//printf("drawSt: %d, drawEnd : %d, tex H : %d, tex X : %d\n", dda->drawSt, dda->drawEd, texHeight, dda->texX);
 	while (d_y < dda->drawEd)
 	{
 		tex_y = (int)dda->texPos & (texHeight - 1);
 		dda->texPos += dda->step;
 		// dda->texN을 계산해서 해당 벽이 NSEW중 어느 벽인지 확인후 color를 넣어준다
-		color = conf->tex[1].texture[texHeight * tex_y + dda->texX];
+		
+		color = conf->tex[dda->texN].texture[texHeight * tex_y + dda->texX];
 		if (cast->side == 1)
-			color = (color >> 1) & 8355711;
+			d_y += 0;
+			//color = (color >> 1) & 8355711;
 		conf->screenBuffer[d_y][x] = color;
 		d_y++;
 	}
@@ -115,7 +109,13 @@ void		casting_wall(t_info *info, t_config *conf)
 	}
 }
 
+/*
 
+맞은 벽이 y축인지 x축인지에 따라 동서 // 북남 을 정해지고
+
+
+
+*/
 
 
 

@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 18:54:57 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/18 21:53:43 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/19 13:08:03 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int			get_next_line(int fd, char **line)
 	char			*buffer;
 	int				isLast;
 
-	printf("fd : %d\n", fd);
 	isLast = 1;
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (FALSE);
@@ -79,6 +78,5 @@ int			get_next_line(int fd, char **line)
 	}
 	*line = update_line(page[fd], isLast);
 	page[fd] = update_page(page[fd], isLast);
-	printf("%d\n", isLast);
 	return (isLast > 0 ? TRUE : FALSE);
 }

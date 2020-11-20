@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 18:04:14 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/17 11:26:50 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 12:51:22 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int			isMap(char *line)
 	pos = 0;
 	while (line[pos])
 	{
-		if (ft_strchr("012S", line[pos]))
+		if (ft_strchr("012NSEW ", line[pos]))
 			pos++;
 		else
 			return (FALSE);
@@ -46,7 +46,6 @@ static int			isMap(char *line)
 
 static int			check_line_type(char *line)
 {
-	printf("%c%c\n", line[0], line[1]);
 	if (line[0] == 'R' && line[1] == ' ')
 		return (cub_R);
 	else if (line[0] == 'N' && line[1] == 'O')
@@ -94,21 +93,17 @@ int			parse_info(t_info *info, char *path)
 	g_ret = 1;
 	while ((g_ret = get_next_line(g_fd, &line)) > 0)
 	{
-		printf("==start==\n");
 		if ((type = check_line_type(line)) == -1)
-			return (ERROR_MESSAGE(info, FALSE, "check type error"));
-
-		printf(">> %d\n", g_ret);
+			return (ERROR_MESSAGE(info, FALSE, "error wrong type"));
 		if (is_blank_line(line) && !info->config.worldMap)
 		{
 			free(line);
 			continue;
 		}
 		else if (is_blank_line(line) && info->config.worldMap && g_ret)
-			return (ERROR_MESSAGE(info, FALSE, "blank line error"));
-
+			return (ERROR_MESSAGE(info, FALSE, "error blank line"));
 		if (!(parse_by_type(info, line, g_ret, type)))
-			return (0);
+			return (FALSE);
 	}
 	parse_by_type(info, line, g_ret, type);
 	close(g_fd);

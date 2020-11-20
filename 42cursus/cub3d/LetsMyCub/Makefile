@@ -6,7 +6,7 @@
 #    By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 20:08:11 by wchoi             #+#    #+#              #
-#    Updated: 2020/11/17 16:20:49 by wchoi            ###   ########.fr        #
+#    Updated: 2020/11/20 10:22:10 by wchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,16 @@ SRCS_NAME = main.c \
 			casting_wall.c\
 			casting_floor.c\
 			cub3d.c\
+			map_check.c\
 			keyControl.c\
 			keyControl2.c\
 			textures.c\
 			gnl.c\
 			parsing_info.c\
 			parsing_info2.c\
+			parsing_info3.c\
 			utils.c\
+			utils2.c\
 
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))

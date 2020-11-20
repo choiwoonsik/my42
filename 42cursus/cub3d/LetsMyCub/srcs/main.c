@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:43:57 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/18 23:20:12 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 12:34:25 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,6 @@ int			valid_argument(int argc, char **argv)
 	return (TRUE);
 }
 
-void		printf_map(char **map)
-{
-	int width = ft_strlen(map[0]);
-	printf("width : %d\n", width);
-
-	for (int i = 0; i < 9; i++)
-	{
-		for (int j = 0; j < 25; j++)
-			printf(" %d", map[i][j] - '0');
-		printf("\n");
-	}
-}
-
 int			main(int argc, char **argv)
 {
 	t_info		info;
@@ -58,11 +45,10 @@ int			main(int argc, char **argv)
 		return (ERROR_MESSAGE(&info, FALSE, "parse error"));
 	if (!(load_texture(&info)))
 		return (ERROR_MESSAGE(&info, FALSE, "load error"));
-
+	if (!(isPossible_map(&info, &info.config)))
+		return (ERROR_MESSAGE(&info, FALSE, "map error"));
+	
 	mini_screen_init(&info);
-
-	printf_map(info.config.worldMap);
-
 	mini_init(&info, &info.config);
 	f_free(&info);
 	return (0);

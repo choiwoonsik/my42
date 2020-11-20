@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:29:20 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/18 23:38:35 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 12:05:54 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "libft.h"
 # include "mlx.h"
 
+
 //map정보 파싱받아서 넣기
 #define BUFFER_SIZE		16
 
@@ -36,8 +37,6 @@
 #define cub_CL			6
 #define cub_MAP			10
 //
-
-void		printf_map(char **map);
 
 typedef struct s_floor
 {
@@ -199,6 +198,14 @@ int				parse_info(t_info *info, char *path);
 // parsing_info2.c
 int				parse_by_type(t_info *info, char *line, int ret, int type);
 
+// parsing_info3.c
+int				parse_screen_size(t_info *info, char *line);
+char			*parse_path(char *line);
+int				parse_color(char *line);
+char			*update_map(char *buffer, char *line);
+
+// map_check.c
+int				isPossible_map(t_info *info, t_config *conf);
 
 // keyControl.c
 int				key_control();
@@ -224,6 +231,8 @@ int				free_line(char *line, int ret);
 int				is_upper(char c);
 int				is_space(int c);
 int				is_digit(char c);
-char			*update_map(char *buffer, char *line);
+
+// utils2.c
+int				pass_upper_space(char *line, int i);
 
 #endif
