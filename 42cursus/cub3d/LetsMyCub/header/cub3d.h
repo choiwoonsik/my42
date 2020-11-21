@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:29:20 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 12:05:54 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 21:27:24 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 #define BUFFER_SIZE		16
 
 #define cub_R			7
-#define cub_NO			0
-#define cub_SO			1
-#define cub_WE			2
-#define cub_EA			3
+#define cub_EA			0
+#define cub_WE			1
+#define cub_SO			2
+#define cub_NO			3
 #define cub_S			4
 #define cub_FL			5
 #define cub_CL			6
@@ -163,6 +163,21 @@ typedef struct s_player
 	double		camY;
 }				t_player;
 
+typedef struct s_spritePos
+{
+	double		x;
+	double		y;
+}				t_spPos;
+
+typedef struct s_info_sprite
+{
+	t_spPos		*sp_Arr;
+	double		*zBuffer;
+	int			*sp_OrderArr;
+	double		*sp_DistArr;
+	int			sp_count;
+}				t_sp_info;
+
 typedef struct	s_info
 {
 	void		*mlx;
@@ -172,6 +187,7 @@ typedef struct	s_info
 	t_player	player;
 	t_cast		cast;
 	t_dda		dda;
+	t_sp_info	sp;
 }				t_info;
 
 // 함수 선언
@@ -234,5 +250,8 @@ int				is_digit(char c);
 
 // utils2.c
 int				pass_upper_space(char *line, int i);
+
+// sprite.c
+int				init_sprite(t_info *info, t_sp_info *sprite);
 
 #endif

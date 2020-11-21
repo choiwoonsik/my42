@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 11:37:17 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 13:05:59 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 21:38:14 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static int			*load_image(t_info *info, char *path, t_img *img, int idx)
 	int		*texture;
 	
 	texture = NULL;
+	printf("is ok here?\n");
+	printf(">%s\n", path);
 	if (!(img->img = mlx_xpm_file_to_image
 	(info->mlx, path, &img->img_width, &img->img_height)))
 		ERROR_MESSAGE(info, FALSE, "img error");
@@ -48,6 +50,7 @@ static int			*load_image(t_info *info, char *path, t_img *img, int idx)
 	img->data = (int *)mlx_get_data_addr
 	(img->img, &img->bits_per_pixel, &img->size_line, &img->endian);
 
+	//printf("is ok here?\n");
 	texture = copy_image(info, img, texture);
 	return (texture);
 }
@@ -60,9 +63,11 @@ int			load_texture(t_info *info)
 	i = -1;
 	while (++i < 5)
 	{
+		printf("check\n");
 		if (!(info->config.tex[i].texture =
 				load_image(info, info->config.tex[i].texPath, &img, i)))
 			return (FALSE);
+		printf(">> %s\n", info->config.tex[i].texPath);
 		free(info->config.tex[i].texPath);
 		info->config.tex[i].texPath = NULL;
 	}

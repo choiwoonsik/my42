@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 13:09:38 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 11:45:37 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 21:43:08 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ void		calc_dda(t_cast *cast, t_info *info)
 			cast->hit = 1;
 	}
 	if (cast->side == 0)
-		cast->perpwallDist = (cast->mapX - info->player.posX + (1 - cast->stepX) / 2) / cast->rayDirX;
+		cast->perpwallDist = (cast->mapX - info->player.posX
+		+ (1 - cast->stepX) / 2) / cast->rayDirX;
 	else
-		cast->perpwallDist = (cast->mapY - info->player.posY + (1 - cast->stepY) / 2) / cast->rayDirY;
+		cast->perpwallDist = (cast->mapY - info->player.posY
+		+ (1 - cast->stepY) / 2) / cast->rayDirY;
 }
 
 void		calc_wall_height(t_cast *cast, t_dda *dda, t_config *conf, int x)
@@ -82,12 +84,11 @@ void		calc_wall_height(t_cast *cast, t_dda *dda, t_config *conf, int x)
 	{
 		tex_y = (int)dda->texPos & (texHeight - 1);
 		dda->texPos += dda->step;
-		// dda->texN을 계산해서 해당 벽이 NSEW중 어느 벽인지 확인후 color를 넣어준다
-		
+		if (cast->side == 1 && dda->texN != 4)
+			dda->texN = cast->rayDirY < 0 ? cub_NO : cub_SO;
+		else if (cast->side == 0 && dda->texN != 4)
+			dda->texN = cast->rayDirX < 0 ? cub_WE : cub_EA;
 		color = conf->tex[dda->texN].texture[texHeight * tex_y + dda->texX];
-		if (cast->side == 1)
-			d_y += 0;
-			//color = (color >> 1) & 8355711;
 		conf->screenBuffer[d_y][x] = color;
 		d_y++;
 	}
@@ -108,59 +109,3 @@ void		casting_wall(t_info *info, t_config *conf)
 		x++;
 	}
 }
-
-/*
-
-맞은 벽이 y축인지 x축인지에 따라 동서 // 북남 을 정해지고
-
-
-
-*/
-
-
-
-// void		calc_wall_pos(t_cast *cast, t_dda *dda, t_wall *wall)
-// {
-// 	if (cast->side == 0 && cast->rayDirX > 0)
-// 	{
-// 		wall->floorXwall = cast->mapX;
-// 		wall->floorYwall = cast->mapY + dda->wallX;
-// 	}
-// 	else if (cast->side == 0 && cast->rayDirX < 0)
-// 	{
-// 		wall->floorXwall = cast->mapX + 1.0;
-// 		wall->floorYwall = cast->mapY + dda->wallX;
-// 	}
-// 	else if (cast->side == 1 && cast->rayDirY > 0)
-// 	{
-// 		wall->floorXwall = cast->mapX + dda->wallX;
-// 		wall->floorYwall = cast->mapY;
-// 	}
-// 	else
-// 	{
-// 		wall->floorXwall = cast->mapX + dda->wallX;
-// 		wall->floorYwall = cast->mapY + 1.0;
-// 	}
-// }
-
-// void		build_wall(int y, int x, t_info *info, t_wall *wall)
-// {
-// 	double		weight;
-// 	double		currentFloorX;
-// 	double		currentFloorY;
-// 	int			floorTexX;
-// 	int			floorTexY;
-// 	//int			checkBoardPattern;
-// 	//int			floorTexture;
-
-// 	wall->currentDist = screenHeight / (2.0 * y - screenHeight);
-// 	weight = (wall->currentDist - wall->distPlayer) / (wall->distWall - wall->distPlayer);
-// 	currentFloorX = weight * wall->floorXwall + (1.0 - weight) * info->player.posX;
-// 	currentFloorY = weight * wall->floorYwall + (1.0 - weight) * info->player.posY;
-
-// 	floorTexX = (int)(currentFloorX * texWidth) % texWidth;
-// 	floorTexY = (int)(currentFloorY * texHeight) % texHeight;
-
-// 	info->config.screenBuffer[y][x] = (info->config.texture[3][texWidth * floorTexY + floorTexX] >> 1) & 835711;
-// 	info->config.screenBuffer[screenHeight - y][x] = info->config.texture[6][texWidth * floorTexY + floorTexX];
-// }

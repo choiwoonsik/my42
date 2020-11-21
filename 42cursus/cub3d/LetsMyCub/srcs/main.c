@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:43:57 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 12:34:25 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 20:57:25 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ int			main(int argc, char **argv)
 		return (ERROR_MESSAGE(&info, FALSE, "parse error"));
 	if (!(load_texture(&info)))
 		return (ERROR_MESSAGE(&info, FALSE, "load error"));
-	if (!(isPossible_map(&info, &info.config)))
-		return (ERROR_MESSAGE(&info, FALSE, "map error"));
-	
-	mini_screen_init(&info);
-	mini_init(&info, &info.config);
-	f_free(&info);
+	// if (!(isPossible_map(&info, &info.config)))
+	// 	return (ERROR_MESSAGE(&info, FALSE, "map error"));
+	// if (!init_sprite(&info, &info.sp))
+	// 	return (ERROR_MESSAGE(&info, FALSE, "sprite error"));
+	// mini_screen_init(&info);
+	// mini_init(&info, &info.config);
+	// f_free(&info);
 	return (0);
 }

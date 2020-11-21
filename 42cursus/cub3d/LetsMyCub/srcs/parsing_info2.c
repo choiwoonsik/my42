@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:31:29 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 12:53:56 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/20 18:36:40 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			parse_type_RNSFC(int type, t_info *info, char *line, t_config *conf)
 		if (!parse_screen_size(info, line))
 			return (free_line(line, FALSE));
 	}
-	else if (type >= cub_NO && type <= cub_S)
+	else if (type >= cub_EA && type <= cub_S)
 	{
 		if (conf->tex[type].texPath
 		|| !(conf->tex[type].texPath = parse_path(line)))
