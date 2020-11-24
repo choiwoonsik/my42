@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 11:16:24 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 09:30:28 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/24 16:43:49 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,25 @@
 
 void			key_w(t_info *info)
 {
-	if (!(info->config.worldMap
+	if ((info->config.worldMap
 	[(int)(info->player.posX + info->player.dirX * info->config.moveSpeed)]
-	[(int)info->player.posY] - '0'))
+	[(int)info->player.posY] - '0') == 0)
 		info->player.posX += info->player.dirX * info->config.moveSpeed;
 
-	if (!(info->config.worldMap
-	[(int)info->player.posX]
-	[(int)(info->player.posY + info->player.dirY * info->config.moveSpeed)] - '0'))
+	if ((info->config.worldMap[(int)info->player.posX]
+	[(int)(info->player.posY + info->player.dirY * info->config.moveSpeed)] - '0') == 0)
 		info->player.posY += info->player.dirY * info->config.moveSpeed;
 }
 
 void			key_s(t_info *info)
 {
-	if (!(info->config.worldMap
+	if ((info->config.worldMap
 	[(int)(info->player.posX - info->player.dirX * info->config.moveSpeed)]
-	[(int)info->player.posY] - '0'))
+	[(int)info->player.posY] - '0') == 0)
 		info->player.posX -= info->player.dirX * info->config.moveSpeed;
 
-	if (!(info->config.worldMap
-	[(int)info->player.posX]
-	[(int)(info->player.posY - info->player.dirY * info->config.moveSpeed)] - '0'))
+	if ((info->config.worldMap[(int)info->player.posX]
+	[(int)(info->player.posY - info->player.dirY * info->config.moveSpeed)] - '0') == 0)
 		info->player.posY -= info->player.dirY * info->config.moveSpeed;
 }
 

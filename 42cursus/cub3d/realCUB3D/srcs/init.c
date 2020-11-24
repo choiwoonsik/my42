@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 21:19:23 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 12:24:58 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/23 23:43:19 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int				mini_config_init(t_info *info)
 	return (TRUE);
 }
 
-int				mini_screen_init(t_info *info)
+void			mini_screen_init(t_info *info)
 {
 	int i;
 	int j;
@@ -64,7 +64,15 @@ int				mini_screen_init(t_info *info)
 		while (++j < info->config.screenWidth)
 			info->config.screenBuffer[i][j] = 0;
 	}
-	return (0);
+}
+
+void			mini_init(t_info *info, t_config *conf)
+{
+	info->mlx = mlx_init();
+	info->win = mlx_new_window(info->mlx, conf->screenWidth, conf->screenHeight, "cub3d");
+	info->img.img = mlx_new_image(info->mlx, conf->screenWidth, conf->screenHeight);
+	info->img.data = (int *)mlx_get_data_addr(info->img.img,
+	&info->img.bits_per_pixel, &info->img.size_line, &info->img.endian);
 }
 
 void			f_free(t_info *info)
@@ -87,20 +95,4 @@ void			f_free(t_info *info)
 		i++;
 	}
 	free(info->config.tex);
-}
-
-int				mini_init(t_info *info, t_config *conf)
-{
-	info->mlx = mlx_init();
-
-	info->win = mlx_new_window(info->mlx, conf->screenWidth, conf->screenHeight, "cub3d");
-	info->img.img = mlx_new_image(info->mlx, conf->screenWidth, conf->screenHeight);
-	info->img.data = (int *)mlx_get_data_addr(info->img.img,
-	&info->img.bits_per_pixel, &info->img.size_line, &info->img.endian);
-
-	mlx_loop_hook(info->mlx, &main_loop, info);
-	mlx_hook(info->win, KEY_PRESS, 0, &key_control, info);
-	mlx_hook(info->win, KEY_EXIT, 0, &exit_game, info);
-	mlx_loop(info->mlx);
-	return (0);
 }

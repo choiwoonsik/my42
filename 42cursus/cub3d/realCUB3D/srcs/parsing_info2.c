@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:31:29 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 21:44:38 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/23 23:27:04 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		copy_to_original(t_config *conf, char **buf_map)
 		conf->worldMap[i] = (char *)malloc(sizeof (char)
 							* (conf->mapWidth + 1));
 		j = -1;
-		while (++j < conf->mapWidth)
+		while (buf_map[i][++j])
 			conf->worldMap[i][j] = buf_map[i][j];
 		conf->worldMap[i][j] = '\0';
 	}
@@ -63,8 +63,7 @@ int			parse_type_RNSFC(int type, t_info *info, char *line, t_config *conf)
 	}
 	else if (type >= cub_EA && type <= cub_S)
 	{
-		if (conf->tex[type].texPath
-		|| !(conf->tex[type].texPath = parse_path(line)))
+		if (!(conf->tex[type].texPath = parse_path(line)))
 			return (free_line(line, FALSE));
 	}
 	else if (type == cub_FL || type == cub_CL)

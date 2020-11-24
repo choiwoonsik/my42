@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 10:19:52 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 12:06:23 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/23 23:17:28 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char		*parse_path(char *line)
 	int		i;
 	char	*path;
 
+	i = 0;
 	i = pass_upper_space(&line[0], 0);
 	path = ft_strdup(line + i);
 	printf("%s\n", path);

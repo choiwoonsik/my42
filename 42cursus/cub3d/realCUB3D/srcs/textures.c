@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 11:37:17 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 13:05:59 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/24 15:16:19 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,17 @@ int					*copy_image(t_info *info, t_img *img, int * tex)
 	int		x;
 
 	if (!(tex = (int *)malloc
-					(sizeof(int) * ((img->img_height * img->img_width) + 1))))
+					(sizeof(int) * (img->img_height * img->img_width) + 1)))
 		ERROR_MESSAGE(info, FALSE, "alloc error");
 	y = -1;
 	while (++y < img->img_height)
 	{
 		x = -1;
 		while (++x < img->img_width)
-		{
 			tex[img->img_width * y + x] = img->data[img->img_width * y + x];
-			if (is_space(img->data[img->img_width * y + x]))
-				tex[img->img_width * y + x] = 0;
-		}
 	}
+	--y;
+	--x;
 	tex[img->img_width * y + x] = '\0';
 	return (tex);
 }
@@ -61,7 +59,7 @@ int			load_texture(t_info *info)
 	while (++i < 5)
 	{
 		if (!(info->config.tex[i].texture =
-				load_image(info, info->config.tex[i].texPath, &img, i)))
+		load_image(info, info->config.tex[i].texPath, &img, i)))
 			return (FALSE);
 		free(info->config.tex[i].texPath);
 		info->config.tex[i].texPath = NULL;

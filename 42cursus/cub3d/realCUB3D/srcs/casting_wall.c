@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 13:09:38 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 21:53:42 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/24 15:39:25 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		calc_dda(t_cast *cast, t_info *info)
 			cast->mapY += cast->stepY;
 			cast->side = 1;
 		}
-		if (info->config.worldMap[cast->mapX][cast->mapY] - '0' > 0)
+		if (info->config.worldMap[cast->mapX][cast->mapY] - '0' == 1)
 			cast->hit = 1;
 	}
 	if (cast->side == 0)
@@ -72,8 +72,6 @@ void		calc_wall_height(t_cast *cast, t_dda *dda, t_config *conf, int x)
 	int		color;
 	int		texHeight;
 
-	if (dda->texN == 2)
-		dda->texN = 4;
 	texHeight = conf->tex[dda->texN].texHeight;
 	dda->step = 1.0 * texHeight / dda->lineHeight;
 	dda->texPos = (dda->drawSt - conf->screenHeight / 2 + dda->lineHeight / 2) * dda->step;
@@ -83,16 +81,16 @@ void		calc_wall_height(t_cast *cast, t_dda *dda, t_config *conf, int x)
 		tex_y = (int)dda->texPos & (texHeight - 1);
 		dda->texPos += dda->step;
 		if (cast->side == 1 && dda->texN != 4)
-			dda->texN = cast->rayDirY < 0 ? cub_SO : cub_NO;
+			dda->texN = cast->rayDirY < 0 ? cub_WE : cub_EA;
 		else if (cast->side == 0 && dda->texN != 4)
-			dda->texN = cast->rayDirX < 0 ? cub_EA : cub_WE;
+			dda->texN = cast->rayDirX < 0 ? cub_NO : cub_SO;
 		color = conf->tex[dda->texN].texture[texHeight * tex_y + dda->texX];
 		conf->screenBuffer[d_y][x] = color;
 		d_y++;
 	}
 }
 
-void		casting_wall(t_info *info, t_config *conf)
+void		casting_wall(t_info *info, t_config *conf, t_sp *sp)
 {
 	int		x;
 
@@ -104,6 +102,7 @@ void		casting_wall(t_info *info, t_config *conf)
 		calc_dda(&info->cast, info);
 		dda_init(&info->dda, &info->cast, &info->config, &info->player);
 		calc_wall_height(&info->cast, &info->dda, &info->config, x);
+		sp->zBuffer[x] = info->cast.perpwallDist;
 		x++;
 	}
 }

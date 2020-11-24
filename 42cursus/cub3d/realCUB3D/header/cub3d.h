@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:29:20 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 21:45:04 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/24 16:33:27 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,77 +36,81 @@
 #define cub_FL			5
 #define cub_CL			6
 #define cub_MAP			10
+
+#define uDiv			1
+#define vDiv			1
+#define vMove			0.0
 //
 
 typedef struct s_floor
 {
-	float	rayDirX0;
-	float	rayDirY0;
-	float	rayDirX1;
-	float	rayDirY1;
+	float		rayDirX0;
+	float		rayDirY0;
+	float		rayDirX1;
+	float		rayDirY1;
 
-	int		p;
-	float	posZ;
-	float	rowDist;
+	int			p;
+	float		posZ;
+	float		rowDist;
 
-	float	floorStepX;
-	float	floorStepY;
-	float	floorX;
-	float	floorY;
+	float		floorStepX;
+	float		floorStepY;
+	float		floorX;
+	float		floorY;
 
-	int		ceilX;
-	int		ceilY;
+	int			ceilX;
+	int			ceilY;
 
-	int		textureX;
-	int		textureY;
-	int		color;
+	int			textureX;
+	int			textureY;
+	int			color;
 }				t_floor;
 
 typedef struct s_wall
 {
-	double	distWall;
-	double	distPlayer;
-	double	currentDist;
-	double	floorXwall;
-	double	floorYwall;
+	double		distWall;
+	double		distPlayer;
+	double		currentDist;
+	double		floorXwall;
+	double		floorYwall;
 }				t_wall;
 
 typedef struct s_DDA
 {
-	int		lineHeight;
-	int		drawSt;
-	int		drawEd;
+	int			lineHeight;
+	int			drawSt;
+	int			drawEd;
 
-	double	wallX;
-	int		texN;
-	int		texX;
-	double	texPos;
+	double		wallX;
+	int			texN;
+	int			texX;
+	double		texPos;
 
 	double	step;
 }				t_dda;
 
 typedef struct	s_cast
 {
-	double cameraX;
-	double rayDirX;
-	double rayDirY;
+	double 		cameraX;
+	double 		rayDirX;
+	double 		rayDirY;
 
-	int mapX;
-	int mapY;
+	int 		mapX;
+	int 		mapY;
 
-	double deltaDistX;
-	double deltaDistY;
+	double 		deltaDistX;
+	double 		deltaDistY;
 
-	double sideDistX;
-	double sideDistY;
+	double 		sideDistX;
+	double 		sideDistY;
 
-	double perpwallDist;
+	double 		perpwallDist;
 
-	int		stepX;
-	int		stepY;
+	int			stepX;
+	int			stepY;
 
-	int		hit;
-	int		side;
+	int			hit;
+	int			side;
 }				t_cast;
 
 typedef struct	s_img
@@ -163,6 +167,58 @@ typedef struct s_player
 	double		camY;
 }				t_player;
 
+typedef struct s_pair
+{
+	double		first;
+	int			second;
+}				t_pair;
+
+typedef struct s_sprite
+{
+	int			x;
+	int			y;
+}				t_spInfo;
+
+typedef struct s_sp
+{
+	t_spInfo	*spArr;
+	int			count;
+	double		*zBuffer;
+	int			*spOrder;
+	double 		*spDis;
+
+	double		spriteX;
+	double		spriteY;
+
+	int			spriteHeight;
+	int			spriteWidth;
+
+	int			drawStartX;
+	int			drawStartY;
+	int			drawEndX;
+	int			drawEndY;
+
+	double		invCamMtx;
+	double		invX;
+	double		invY;
+
+	int			spScreenX;
+	int			vMoveScreen;
+}				t_sp;
+
+typedef struct s_val
+{
+	int			y;
+	int			d;
+	int			ScH;
+	int			ScW;
+	int			texX;
+	int			texY;
+	int			color;
+	int			texW;
+	int			texH;
+}				t_val;
+
 typedef struct	s_info
 {
 	void		*mlx;
@@ -184,8 +240,8 @@ int				main_loop(t_info *info);
 
 // init.c
 void			mini_value_init(t_info *info);
-int				mini_screen_init(t_info *info);
-int				mini_init(t_info *info, t_config *conf);
+void			mini_screen_init(t_info *info);
+void			mini_init(t_info *info, t_config *conf);
 int				mini_config_init(t_info *info);
 void			f_free(t_info *info);
 
@@ -221,7 +277,7 @@ void			cast_wall_init(t_info *info, t_config *conf, int x);
 void			dda_init(t_dda *dda, t_cast *cast, t_config *conf, t_player *p);
 
 // casting_wall.c
-void			casting_wall(t_info *info, t_config *conf);
+void			casting_wall(t_info *info, t_config *conf, t_sp *sp);
 
 // casting_floor.c
 void			casting_floor(t_info *info);
@@ -234,5 +290,15 @@ int				is_digit(char c);
 
 // utils2.c
 int				pass_upper_space(char *line, int i);
+
+// sprite_init.c
+int				sprite_init(t_info *info, t_sp *sp);
+
+// casting_sprite.c
+void			casting_sprite(t_sp *sp, t_info *info);
+
+// calc_sprite.c
+void			calc_sprite(t_sp *sp, t_info *info);
+
 
 #endif

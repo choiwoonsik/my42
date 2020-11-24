@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:08:40 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 22:06:05 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/24 16:35:47 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void		dda_init(t_dda *dda, t_cast *cast, t_config *conf, t_player *p)
 	if (dda->drawEd >= conf->screenHeight)
 		dda->drawEd = conf->screenHeight - 1;
 	dda->texN = conf->worldMap[cast->mapX][cast->mapY] - '0';
-	if (dda->texN == 2)
-		dda->texN = 4;
 	if (cast->side == 0)
 		dda->wallX = p->posY + cast->perpwallDist * cast->rayDirY;
 	else
