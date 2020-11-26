@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:31:29 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/23 23:27:04 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/26 13:00:15 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void		copy_to_original(t_config *conf, char **buf_map)
 	int		j;
 
 	i = -1;
-	conf->worldMap = (char **)malloc(sizeof (char *)
-						* (conf->mapHeight + 1));
-	while (++i < conf->mapHeight)
+	conf->world_map = (char **)malloc(sizeof(char *)
+						* (conf->map_height + 1));
+	while (++i < conf->map_height)
 	{
-		conf->worldMap[i] = (char *)malloc(sizeof (char)
-							* (conf->mapWidth + 1));
+		conf->world_map[i] = (char *)malloc(sizeof(char)
+							* (conf->map_width + 1));
 		j = -1;
 		while (buf_map[i][++j])
-			conf->worldMap[i][j] = buf_map[i][j];
-		conf->worldMap[i][j] = '\0';
+			conf->world_map[i][j] = buf_map[i][j];
+		conf->world_map[i][j] = '\0';
 	}
-	conf->worldMap[i] = NULL;
+	conf->world_map[i] = NULL;
 }
 
 int			parse_map(t_config *conf, char *line)
@@ -47,30 +47,29 @@ int			parse_map(t_config *conf, char *line)
 	while (buf_map[++i])
 		j = j < (int)ft_strlen(buf_map[i]) ?
 		(int)ft_strlen(buf_map[i]) : j;
-	conf->mapHeight = i;
-	conf->mapWidth = j;
-
+	conf->map_height = i;
+	conf->map_width = j;
 	copy_to_original(conf, buf_map);
 	return (TRUE);
 }
 
-int			parse_type_RNSFC(int type, t_info *info, char *line, t_config *conf)
+int			check_type(int type, t_info *info, char *line, t_config *conf)
 {
-	if (type == cub_R)
+	if (type == CUB_R)
 	{
 		if (!parse_screen_size(info, line))
 			return (free_line(line, FALSE));
 	}
-	else if (type >= cub_EA && type <= cub_S)
+	else if (type >= CUB_EA && type <= CUB_S)
 	{
-		if (!(conf->tex[type].texPath = parse_path(line)))
+		if (!(conf->tex[type].tex_path = parse_path(line)))
 			return (free_line(line, FALSE));
 	}
-	else if (type == cub_FL || type == cub_CL)
+	else if (type == CUB_FL || type == CUB_CL)
 	{
-		if (type == cub_FL && !(conf->fl_color = parse_color(line)))
+		if (type == CUB_FL && !(conf->fl_color = parse_color(line)))
 			return (free_line(line, FALSE));
-		if (type == cub_CL && !(conf->cl_color = parse_color(line)))
+		if (type == CUB_CL && !(conf->cl_color = parse_color(line)))
 			return (free_line(line, FALSE));
 	}
 	return (TRUE);
@@ -82,8 +81,8 @@ int			parse_by_type(t_info *info, char *line, int ret, int type)
 
 	if (type <= 7 && type >= 0)
 	{
-		if (!(parse_type_RNSFC(type, info, line, &info->config)))
-			return (ERROR_MESSAGE(info, FALSE, "error RNSCF"));
+		if (!(check_type(type, info, line, &info->config)))
+			return (error_message(info, FALSE, "error RNSCF"));
 	}
 	else if (type == 10)
 	{

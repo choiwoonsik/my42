@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 16:13:04 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/19 16:14:40 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/26 11:32:40 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,14 @@ int				pass_upper_space(char *line, int i)
 	while (is_space(line[i]))
 		i++;
 	return (i);
+}
+
+int				exit_game(void *param)
+{
+	t_info	*info;
+
+	info = (t_info *)param;
+	f_free(info);
+	exit(0);
+	return (0);
 }

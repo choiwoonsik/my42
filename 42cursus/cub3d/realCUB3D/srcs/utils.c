@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:59:01 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/20 12:07:20 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/26 11:10:41 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			is_space(int c)
 
 int			is_digit(char c)
 {
-	if(ft_isdigit(c))
+	if (ft_isdigit(c))
 		return (TRUE);
 	return (FALSE);
 }

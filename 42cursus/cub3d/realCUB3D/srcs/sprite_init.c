@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:39:04 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/24 16:50:26 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/26 12:56:34 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ void			count_sprite(t_config *conf, t_sp *sp)
 	int		y;
 
 	x = -1;
-	while (++x < conf->mapHeight)
+	while (++x < conf->map_height)
 	{
 		y = -1;
-		while (conf->worldMap[x][++y])
+		while (conf->world_map[x][++y])
 		{
-			if (conf->worldMap[x][y] == '2')
+			if (conf->world_map[x][y] == '2')
 			{
-				sp->spArr[sp->count].x = x;
-				sp->spArr[sp->count].y = y;
+				sp->sp_arr[sp->count].x = x;
+				sp->sp_arr[sp->count].y = y;
 				sp->count++;
-				//printf("x : %d, y : %d\n", x, y);
 			}
 		}
 	}
@@ -37,16 +36,17 @@ void			count_sprite(t_config *conf, t_sp *sp)
 int				sprite_init(t_info *info, t_sp *sp)
 {
 	sp->count = 0;
-	if (!(sp->spArr = (t_spInfo *)malloc(sizeof(t_spInfo)
-			* (info->config.mapHeight * info->config.mapWidth))))
-		return (ERROR_MESSAGE(info, FALSE, "error alloc"));
+	if (!(sp->sp_arr = (t_sp_info *)malloc(sizeof(t_sp_info)
+			* (info->config.map_height * info->config.map_width))))
+		return (error_message(info, FALSE, "error alloc"));
 	count_sprite(&info->config, sp);
-	if (!(sp->zBuffer = (double *)malloc(sizeof(double) * (info->config.screenWidth + 1))))
-		return (ERROR_MESSAGE(info, FALSE, "error alloc"));
-	sp->zBuffer[info->config.screenWidth] = '\0';
-	if (!(sp->spOrder = (int *)malloc(sizeof(int) * sp->count)))
-		return (ERROR_MESSAGE(info, FALSE, "error alloc"));
-	if (!(sp->spDis = (double *)malloc(sizeof(double) * sp->count)))
-		return (ERROR_MESSAGE(info, FALSE, "error alloc"));
+	if (!(sp->z_buffer = (double *)malloc(sizeof(double)
+						* (info->config.screen_width + 1))))
+		return (error_message(info, FALSE, "error alloc"));
+	sp->z_buffer[info->config.screen_width] = '\0';
+	if (!(sp->sp_order = (int *)malloc(sizeof(int) * sp->count)))
+		return (error_message(info, FALSE, "error alloc"));
+	if (!(sp->sp_dis = (double *)malloc(sizeof(double) * sp->count)))
+		return (error_message(info, FALSE, "error alloc"));
 	return (TRUE);
 }

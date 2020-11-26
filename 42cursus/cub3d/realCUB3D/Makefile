@@ -6,7 +6,7 @@
 #    By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 20:08:11 by wchoi             #+#    #+#              #
-#    Updated: 2020/11/24 13:27:38 by wchoi            ###   ########.fr        #
+#    Updated: 2020/11/26 11:29:01 by wchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ SRCS_NAME = main.c \
 			casting_floor.c\
 			cub3d.c\
 			map_check.c\
-			keyControl.c\
-			keyControl2.c\
+			key_control.c\
 			textures.c\
 			gnl.c\
 			parsing_info.c\

@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:43:57 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/24 14:53:59 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/26 11:01:53 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			mini_loop(t_info *info)
 	return (0);
 }
 
-int			ERROR_MESSAGE(t_info *info, int exit_code, char *error_message)
+int			error_message(t_info *info, int exit_code, char *error_message)
 {
 	int		i;
 
@@ -45,18 +45,18 @@ int			main(int argc, char **argv)
 	t_info	info;
 
 	if (!valid_argument(argc, argv))
-		return (ERROR_MESSAGE(&info, FALSE, "argument error"));
+		return (error_message(&info, FALSE, "argument error"));
 	mini_value_init(&info);
 	mini_config_init(&info);
 	if (!parse_info(&info, argv[1]))
-		return (ERROR_MESSAGE(&info, FALSE, "parse error"));
+		return (error_message(&info, FALSE, "parse error"));
 	mini_screen_init(&info);
 	mini_init(&info, &info.config);
 	if (!(load_texture(&info)))
-		return (ERROR_MESSAGE(&info, FALSE, "load error"));
-	if (!(isPossible_map(&info, &info.config)))
-		return (ERROR_MESSAGE(&info, FALSE, "map error"));
-	mini_loop(&info);	
+		return (error_message(&info, FALSE, "load error"));
+	if (!(is_possible_map(&info, &info.config)))
+		return (error_message(&info, FALSE, "map error"));
+	mini_loop(&info);
 	f_free(&info);
 	return (0);
 }

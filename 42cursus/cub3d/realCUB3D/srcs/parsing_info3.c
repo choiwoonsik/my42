@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 10:19:52 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/23 23:17:28 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/26 12:14:51 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int			parse_screen_size(t_info *info, char *line)
 		width = 1920;
 	if (height > 1080)
 		height = 1080;
-	info->config.screenWidth = width;
-	info->config.screenHeight = height;
+	info->config.screen_width = width;
+	info->config.screen_height = height;
 	return (TRUE);
 }
 
@@ -46,7 +46,6 @@ char		*parse_path(char *line)
 	i = 0;
 	i = pass_upper_space(&line[0], 0);
 	path = ft_strdup(line + i);
-	printf("%s\n", path);
 	return (path);
 }
 
@@ -78,8 +77,8 @@ int			parse_color(char *line)
 
 char		*update_map(char *buffer, char *line)
 {
-	char 	*tmp1;
-	char 	*tmp2;
+	char	*tmp1;
+	char	*tmp2;
 
 	tmp1 = ft_strjoin(line, "\n");
 	tmp2 = ft_strjoin(buffer, tmp1);

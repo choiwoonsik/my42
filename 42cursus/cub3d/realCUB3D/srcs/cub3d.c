@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:39:45 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/24 16:46:58 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/26 12:14:51 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void		draw(t_info *info)
 	int		x;
 
 	y = 0;
-	while (y < info->config.screenHeight)
+	while (y < info->config.screen_height)
 	{
 		x = 0;
-		while (x < info->config.screenWidth)
+		while (x < info->config.screen_width)
 		{
-			info->img.data[y * info->config.screenWidth + x] =
-			info->config.screenBuffer[y][x];
+			info->img.data[y * info->config.screen_width + x] =
+			info->config.screen_buffer[y][x];
 			x++;
 		}
 		y++;
@@ -45,7 +45,7 @@ int			main_loop(t_info *info)
 	t_sp	sp;
 
 	if (!(sprite_init(info, &sp)))
-		return (ERROR_MESSAGE(info, FALSE, "sprite error"));
+		return (error_message(info, FALSE, "sprite error"));
 	calc(info, &sp);
 	draw(info);
 	return (0);
