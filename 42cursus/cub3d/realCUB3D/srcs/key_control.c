@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 11:16:24 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/26 12:21:15 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 14:20:52 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ int				key_control(int key, t_info *info)
 		key_a(info);
 	}
 	if (key == KEY_ESCAPE)
+	{
+		f_free(info);
 		exit(0);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:43:57 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/27 12:03:48 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 16:55:51 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ int			main(int argc, char **argv)
 		return (error_message(&info, FALSE, "load error"));
 	if (!(is_possible_map(&info, &info.config)))
 		return (error_message(&info, FALSE, "map error"));
+	if (!(all_info_check(&info)))
+		return (error_message(&info, FALSE, "info error"));
 	if (valid_argument(argc, argv) == SAVE)
 		return (screenshot(&info));
 	mini_loop(&info);
-	f_free(&info);
 	return (0);
 }

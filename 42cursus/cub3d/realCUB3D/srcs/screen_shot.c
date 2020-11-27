@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 20:49:55 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/27 11:55:57 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 18:24:36 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int				screenshot(t_info *info)
 	if (!(write_bmp_data(file, pad, info)))
 		return (error_message(info, FALSE, "error bmp data"));
 	close(file);
+	f_free(info);
 	exit(TRUE);
 	return (TRUE);
 }

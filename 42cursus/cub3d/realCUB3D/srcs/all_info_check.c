@@ -1,41 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   all_info_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/19 16:13:04 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/27 14:21:35 by wchoi            ###   ########.fr       */
+/*   Created: 2020/11/27 16:51:36 by wchoi             #+#    #+#             */
+/*   Updated: 2020/11/27 18:21:51 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int				pass_upper_space(char *line, int i)
+int					all_info_check(t_info *info)
 {
-	while (is_upper(line[i]))
-		i++;
-	while (is_space(line[i]))
-		i++;
-	return (i);
-}
-
-int				exit_game(void *param)
-{
-	t_info	*info;
-
-	info = (t_info *)param;
-	f_free(info);
-	exit(0);
-	return (0);
-}
-
-void			draw_screen(t_info *info)
-{
-	t_sp	sp;
-
-	sprite_init(info, &sp);
-	calc(info, &sp);
-	draw(info);
+	if (!info->config.cl_color || !info->config.fl_color
+		|| !info->config.map_height || !info->config.map_width
+		|| !info->config.screen_height || !info->config.screen_width)
+		return (FALSE);
+	return (TRUE);
 }

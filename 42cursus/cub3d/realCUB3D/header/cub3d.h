@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:29:20 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/27 12:03:31 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 18:24:47 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,5 +286,7 @@ void			calc_sprite(t_sp *sp, t_info *info);
 int				screenshot(t_info *info);
 
 void			draw_screen(t_info *info);
+
+int				all_info_check(t_info *info);
 
 #endif

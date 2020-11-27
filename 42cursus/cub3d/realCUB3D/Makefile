@@ -6,7 +6,7 @@
 #    By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 20:08:11 by wchoi             #+#    #+#              #
-#    Updated: 2020/11/27 11:55:14 by wchoi            ###   ########.fr        #
+#    Updated: 2020/11/27 18:17:37 by wchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ SRCS_NAME = main.c \
 			casting_sprite.c\
 			calc_sprite.c\
 			screen_shot.c\
+			free_all.c\
+			all_info_check.c\
 
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
@@ -46,7 +48,7 @@ SCREENSHOT = screenshot.bmp
 
 HEADER	= -I./header
 
-CFLAG	= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAG	= -Wall -Wextra -Werror
 
 LIBFT	= libft.a
 

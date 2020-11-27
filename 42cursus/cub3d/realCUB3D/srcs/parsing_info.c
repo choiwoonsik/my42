@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 18:04:14 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/27 11:58:45 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 18:03:09 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,21 @@ static int			is_map(char *line)
 
 static int			check_line_type(char *line)
 {
-	if (line[0] == 'R' && line[1] == ' ')
+	if (!ft_strncmp(line, "R ", 2))
 		return (CUB_R);
-	else if (line[0] == 'N' && line[1] == 'O')
+	else if (!ft_strncmp(line, "NO ", 3))
 		return (CUB_NO);
-	else if (line[0] == 'S' && line[1] == 'O')
+	else if (!ft_strncmp(line, "SO ", 3))
 		return (CUB_SO);
-	else if (line[0] == 'W' && line[1] == 'E')
+	else if (!ft_strncmp(line, "WE ", 3))
 		return (CUB_WE);
-	else if (line[0] == 'E' && line[1] == 'A')
+	else if (!ft_strncmp(line, "EA ", 3))
 		return (CUB_EA);
-	else if (line[0] == 'S' && line[1] == ' ')
+	else if (!ft_strncmp(line, "S ", 2))
 		return (CUB_S);
-	else if (line[0] == 'F' && line[1] == ' ')
+	else if (!ft_strncmp(line, "F ", 2))
 		return (CUB_FL);
-	else if (line[0] == 'C' && line[1] == ' ')
+	else if (!ft_strncmp(line, "C ", 2))
 		return (CUB_CL);
 	else if (is_map(line))
 		return (CUB_MAP);

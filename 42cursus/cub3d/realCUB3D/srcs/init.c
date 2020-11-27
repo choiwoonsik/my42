@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 21:19:23 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/26 12:21:15 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 13:37:39 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int				mini_config_init(t_info *info)
 	info->config.screen_height = 0;
 	info->config.screen_width = 0;
 	info->config.world_map = NULL;
-	while (++i < 8)
+	info->config.tex = (t_tex *)malloc(sizeof(t_tex) * 5);
+	while (++i < 5)
 	{
-		info->config.tex = (t_tex *)malloc(sizeof(t_tex) * 8);
 		info->config.tex[i].tex_path = NULL;
 		info->config.tex[i].texture = NULL;
 		info->config.tex[i].tex_height = 0;
@@ -78,28 +78,4 @@ void			mini_init(t_info *info, t_config *conf)
 								, conf->screen_width, conf->screen_height);
 	info->img.data = (int *)mlx_get_data_addr(info->img.img,
 	&info->img.bits_per_pixel, &info->img.size_line, &info->img.endian);
-}
-
-void			f_free(t_info *info)
-{
-	int		i;
-
-	i = 0;
-	while (i < info->config.map_height)
-	{
-		if (info->config.world_map[i])
-			free(info->config.world_map[i]);
-		i++;
-	}
-	i = 0;
-	while (i < 8)
-	{
-		if (info->config.tex[i].texture)
-		{
-			free(info->config.tex[i].texture);
-			info->config.tex[i].texture = NULL;
-		}
-		i++;
-	}
-	free(info->config.tex);
 }
