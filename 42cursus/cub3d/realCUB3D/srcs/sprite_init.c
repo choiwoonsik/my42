@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:39:04 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/26 12:56:34 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/26 17:01:05 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void			count_sprite(t_config *conf, t_sp *sp)
 int				sprite_init(t_info *info, t_sp *sp)
 {
 	sp->count = 0;
-	if (!(sp->sp_arr = (t_sp_info *)malloc(sizeof(t_sp_info)
+	if (!(sp->sp_arr = (t_pos *)malloc(sizeof(t_pos)
 			* (info->config.map_height * info->config.map_width))))
 		return (error_message(info, FALSE, "error alloc"));
 	count_sprite(&info->config, sp);

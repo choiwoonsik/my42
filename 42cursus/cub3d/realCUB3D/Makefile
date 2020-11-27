@@ -6,7 +6,7 @@
 #    By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 20:08:11 by wchoi             #+#    #+#              #
-#    Updated: 2020/11/26 11:29:01 by wchoi            ###   ########.fr        #
+#    Updated: 2020/11/27 11:55:14 by wchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS_NAME = main.c \
 			sprite_init.c\
 			casting_sprite.c\
 			calc_sprite.c\
+			screen_shot.c\
 
 SRCS_PATH = ./srcs
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_NAME))

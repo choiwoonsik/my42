@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 18:04:14 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/26 12:59:34 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 11:58:45 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,5 @@ int					parse_info(t_info *info, char *path)
 	}
 	parse_by_type(info, line, g_ret, type);
 	close(g_fd);
-	printf("천장 색 : %d\n", info->config.cl_color);
-	printf("바닥 색 : %d\n", info->config.fl_color);
-	printf("맵 높이 : %d\n", info->config.map_height);
-	printf("맵 폭 : %d\n", info->config.map_width);
-	printf("스크린 높이 : %d\n", info->config.screen_height);
-	printf("스크린 폭 : %d\n", info->config.screen_width);
 	return (TRUE);
 }

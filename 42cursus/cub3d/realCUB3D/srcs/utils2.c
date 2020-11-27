@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 16:13:04 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/26 11:32:40 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 11:52:57 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,13 @@ int				exit_game(void *param)
 	f_free(info);
 	exit(0);
 	return (0);
+}
+
+void			draw_screen(t_info *info)
+{
+	t_sp	sp;
+
+	sprite_init(info, &sp);
+	calc(info, &sp);
+	draw(info);
 }

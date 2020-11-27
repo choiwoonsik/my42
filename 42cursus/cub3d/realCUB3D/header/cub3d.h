@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:29:20 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/26 13:13:46 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/27 12:03:31 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@
 # define U_DIV					1
 # define V_DIV					1
 # define V_MOVE					0.0
+# define RGB					3
+# define FILE_HEADER_SIZE		14
+# define IMG_HEADER_SIZE		40
+# define SAVE					77
 
 typedef struct	s_floor
 {
@@ -153,15 +157,15 @@ typedef struct	s_pair
 	int			second;
 }				t_pair;
 
-typedef struct	s_sprite
+typedef struct	s_pos
 {
 	int			x;
 	int			y;
-}				t_sp_info;
+}				t_pos;
 
 typedef struct	s_sp
 {
-	t_sp_info	*sp_arr;
+	t_pos		*sp_arr;
 	int			count;
 	double		*z_buffer;
 	int			*sp_order;
@@ -194,6 +198,16 @@ typedef struct	s_val
 	int			tex_h;
 }				t_val;
 
+typedef struct	s_bitmapfile
+{
+	void		*ptr;
+	void		*win;
+	t_img		screen;
+	t_pos		size;
+	t_pos		half;
+	double		ratio;
+}				t_bmp;
+
 typedef struct	s_info
 {
 	void		*mlx;
@@ -208,6 +222,10 @@ typedef struct	s_info
 int				error_message(t_info *info, int exit_code, char *error_message);
 
 int				main_loop(t_info *info);
+
+void			calc(t_info *info, t_sp *sp);
+
+void			draw(t_info *info);
 
 void			mini_value_init(t_info *info);
 
@@ -264,5 +282,9 @@ int				sprite_init(t_info *info, t_sp *sp);
 void			casting_sprite(t_sp *sp, t_info *info);
 
 void			calc_sprite(t_sp *sp, t_info *info);
+
+int				screenshot(t_info *info);
+
+void			draw_screen(t_info *info);
 
 #endif
