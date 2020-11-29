@@ -6,7 +6,7 @@
 /*   By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 12:44:16 by wchoi             #+#    #+#             */
-/*   Updated: 2020/11/27 18:22:07 by wchoi            ###   ########.fr       */
+/*   Updated: 2020/11/29 20:52:41 by wchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,7 @@ void			free_screen(t_info *info)
 
 void			free_img_data(t_info *info)
 {
-	int		size;
-	int		i;
-
-	size = 0;
-	i = -1;
-	while (info->img.data[size])
-		size++;
-	while (++i < size - 1)
-		info->img.data[size] = '\0';
+	free(info->img.data);
 }
 
 void			f_free(t_info *info)
