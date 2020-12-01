@@ -6,7 +6,7 @@
 #    By: wchoi <wchoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 20:08:11 by wchoi             #+#    #+#              #
-#    Updated: 2020/11/29 20:54:37 by wchoi            ###   ########.fr        #
+#    Updated: 2020/11/29 21:28:25 by wchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ SCREENSHOT = screenshot.bmp
 
 HEADER	= -I./header
 
-CFLAG	= -Wall -Wextra -Werror# -g3 -fsanitize=address
+CFLAG	= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 LIBFT	= libft.a
 
