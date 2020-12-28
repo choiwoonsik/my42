@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choeunsig <choeunsig@student.42.fr>        +#+  +:+       +#+        */
+/*   By: woonsik <woonsik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 13:47:27 by wchoi             #+#    #+#             */
-/*   Updated: 2020/08/05 13:46:13 by choeunsig        ###   ########.fr       */
+/*   Updated: 2020/12/22 21:40:46 by woonsik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char		*ft_strdup(char *s1)
 	int		i;
 
 	i = ft_strlen(s1);
-	result = (char *)malloc(sizeof(char) * (i + 1));
+	result = malloc(sizeof(char) * (i + 1));
 	if (!result)
 		return (0);
 	i = 0;
