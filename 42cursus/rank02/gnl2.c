@@ -6,7 +6,7 @@
 /*   By: woonsik <woonsik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 12:09:43 by woonsik           #+#    #+#             */
-/*   Updated: 2020/12/28 20:54:46 by woonsik          ###   ########.fr       */
+/*   Updated: 2020/12/29 14:18:46 by woonsik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char    *cut_next_line(char *remains)
     int     j;
     char    *str;
 
+    i = 0;
     while (remains[i] && remains[i] != '\n')
         i++;
     if (!remains[i])
@@ -101,6 +102,7 @@ char    *cut_next_line(char *remains)
     {
         str[j] = remains[i];
         i++;
+        j++;
     }
     str[j] = '\0';
     free((void *) remains);
