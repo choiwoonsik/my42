@@ -1,6 +1,6 @@
-gcc -Wall -Werror -Wextra gnl3.c main.c -o gnl3
-./gnl3 < gnl3.c > yours_.res
+gcc -Wall -Werror -Wextra gnl4.c main.c -o gnl4
+./gnl4 < gnl4.c > yours_.res
 cat -e yours_.res > yours.res
-cat -e < gnl3.c > original.res
+cat -e < gnl4.c > original.res
 diff -y --suppress-common-line original.res yours.res
-rm -rf original.res yours_.res yours.res gnl3
+rm -rf original.res yours_.res yours.res gnl4
