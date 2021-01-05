@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   gnl4.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonsik <woonsik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 16:31:53 by woonsik           #+#    #+#             */
-/*   Updated: 2021/01/03 12:05:32 by woonsik          ###   ########.fr       */
+/*   Created: 2020/12/28 19:13:54 by woonsik           #+#    #+#             */
+/*   Updated: 2020/12/28 19:13:55 by woonsik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-#include <unistd.h>
-#include <stdlib.h>
+int		ft_strlen(char *s)
+{
 
-# define BUFFER_SIZE    1
+}
 
-int     get_next_line(char **line);
+char	*ft_strjoin(char *remains, char *buffer)
+{
 
-#endif
+}
+
+char	*push_line(char *remains)
+{
+
+}
+
+char    *cut_next_line(char *remains)
+{
+
+}
+
+int		get_next_line(char **line)
+{
+
+}

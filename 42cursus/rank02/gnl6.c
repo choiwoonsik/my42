@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl5.c                                             :+:      :+:    :+:   */
+/*   gnl6.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woonsik <woonsik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:13:54 by woonsik           #+#    #+#             */
-/*   Updated: 2021/01/05 09:59:51 by woonsik          ###   ########.fr       */
+/*   Updated: 2021/01/05 10:08:20 by woonsik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_strjoin(char *remains, char *buffer)
 	return (str);
 }
 
-char	*put_line(char *remains)
+char	*push_line(char *remains)
 {
 	int		i;
 	char	*str;
@@ -111,16 +111,16 @@ char	*cut_next_line(char *remains)
 
 int		get_next_line(char **line)
 {
-	static char     *remains;
-	char            buffer[BUFFER_SIZE + 1];
-	int             count;
-	int             fd;
+	static char		*remains;
+	char			buffer[BUFFER_SIZE + 1];
+	int				count;
+	int				fd;
 
-	count = 1;
-	fd = 0;
 	if (!line)
 		return (-1);
-	while (buffer[0] != '\n' && count != 0)
+	fd = 0;
+	count = 1;
+	while (count != 0 && buffer[0] != '\n')
 	{
 		count = read(fd, buffer, BUFFER_SIZE);
 		if (count == -1)
@@ -128,7 +128,7 @@ int		get_next_line(char **line)
 		buffer[count] = '\0';
 		remains = ft_strjoin(remains, buffer);
 	}
-	*line = put_line(remains);
+	*line = push_line(remains);
 	remains = cut_next_line(remains);
 	return (count == 0 ? 0 : 1);
 }
