@@ -1,0 +1,33 @@
+{
+	"C_Cpp.intelliSenseEngineFallback": "Disabled",
+	"files.associations": {
+		"__functional_base": "c",
+		"__functional_base_03": "c",
+		"__hash_table": "c",
+		"__tuple": "c",
+		"algorithm": "c",
+		"array": "c",
+		"chrono": "c",
+		"type_traits": "c",
+		"functional": "c",
+		"iterator": "c",
+		"limits": "c",
+		"memory": "c",
+		"ratio": "c",
+		"tuple": "c",
+		"utility": "c",
+		"__node_handle": "c",
+		"__bit_reference": "c",
+		"bitset": "c",
+		"__memory": "c",
+		"optional": "c",
+		"system_error": "c",
+		"vector": "c",
+		"minishell.h": "c",
+		"get_next_line.h": "c",
+		"libft.h": "c",
+		"errno.h": "c",
+		"fcntl.h": "c",
+		"stdlib.h": "c"
+	}
+}

@@ -1,0 +1,66 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc build minishell",
+            "command": "make",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "Execute Makefile of minishell"
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: run minishell",
+            "command": "./minishell",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "none",
+            "detail": "Run minishell",
+            "problemMatcher": []
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: debug minishell",
+            "command": "gcc",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "-g",
+                "-I./includes/",
+                "./srcs/*.c",
+                "-L",
+                "./libs/gnl",
+                "-l",
+                "gnl",
+                "-L",
+                "./libs/libft",
+                "-l",
+                "ft",
+                "-o",
+                "minishell"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Debug minishell"
+        }
+
+    ],
+    "version": "2.0.0"
+}
