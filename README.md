@@ -14,7 +14,7 @@
 
 <img width="528" alt="libft test code" src="https://user-images.githubusercontent.com/42247724/121803467-b8995680-cc7c-11eb-9043-ea31ea94b4b9.png">
 
-##### ft_printf 과제
+#### ft_printf 과제
 
 [ft_printf code](https://github.com/choiwoonsik/my42-Seoul/tree/master/42cursus/ft_printf_dir/ft_printf)
 
