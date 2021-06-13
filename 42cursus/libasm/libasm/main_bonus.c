@@ -1,6 +1,6 @@
 #include "libasm.h"
 
-t_list		*ft_create_elem(void *data)
+t_list *ft_create_elem(void *data)
 {
 	t_list *elem;
 
@@ -13,15 +13,15 @@ t_list		*ft_create_elem(void *data)
 
 int main(void)
 {
-    t_list *lst;
+	t_list *lst;
 	t_list *tmp;
 	lst = ft_create_elem("8");
 	lst->next = ft_create_elem("2");
 	lst->next->next = ft_create_elem("3");
 	lst->next->next->next = ft_create_elem("4");
-    lst->next->next->next->next = ft_create_elem("7");
-    lst->next->next->next->next->next = ft_create_elem("9");
-	ft_list_push_front_bonus(&lst, "0");
+	lst->next->next->next->next = ft_create_elem("7");
+	lst->next->next->next->next->next = ft_create_elem("9");
+	ft_list_push_front_bonus(&lst, "000");
 	tmp = lst;
 	while (tmp)
 	{
